@@ -13,7 +13,7 @@ export function WellnessCell() {
       <div aria-hidden className="from-obsidian via-obsidian/70 absolute inset-0 bg-gradient-to-t to-transparent" />
 
       <div className="relative z-10">
-        <span className={eyebrowClassName}>Wellness</span>
+        <h2 className={eyebrowClassName}>Wellness</h2>
         <p className="text-foreground mt-2 font-serif text-xl">A quiet floor dedicated to recovery</p>
 
         <ul className="mt-4 flex flex-col gap-3">

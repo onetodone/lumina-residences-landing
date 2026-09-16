@@ -32,7 +32,7 @@ export function SmartHomeCell() {
       <div aria-hidden className="bg-obsidian/60 absolute inset-0" />
 
       <div className="relative z-10 flex h-full flex-col">
-        <span className={eyebrowClassName}>Smart Home</span>
+        <h2 className={eyebrowClassName}>Smart Home</h2>
 
         <div className="border-border bg-graphite/90 shadow-elevated relative mx-auto mt-4 flex w-full max-w-[168px] flex-1 flex-col overflow-hidden rounded-[2rem] border p-3">
           <div aria-hidden className="mx-auto mb-2 h-1.5 w-10 rounded-full bg-white/15" />

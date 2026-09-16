@@ -78,6 +78,7 @@ export function TourForm() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
               transition={{ duration: duration.base, ease: easeLuxury }}
+              role="status"
               className="mt-8 flex flex-col items-start gap-3"
             >
               <span className="bg-status-available/15 text-status-available inline-flex size-10 items-center justify-center rounded-full">
@@ -109,9 +110,14 @@ export function TourForm() {
                   type="text"
                   autoComplete="name"
                   aria-invalid={!!errors.name}
+                  aria-describedby={errors.name ? 'name-error' : undefined}
                   className={fieldClassName}
                 />
-                {errors.name && <span className="text-destructive text-xs">{errors.name.message}</span>}
+                {errors.name && (
+                  <span id="name-error" role="alert" className="text-destructive text-xs">
+                    {errors.name.message}
+                  </span>
+                )}
               </label>
 
               <label className="flex flex-col gap-1.5">
@@ -121,9 +127,14 @@ export function TourForm() {
                   type="email"
                   autoComplete="email"
                   aria-invalid={!!errors.email}
+                  aria-describedby={errors.email ? 'email-error' : undefined}
                   className={fieldClassName}
                 />
-                {errors.email && <span className="text-destructive text-xs">{errors.email.message}</span>}
+                {errors.email && (
+                  <span id="email-error" role="alert" className="text-destructive text-xs">
+                    {errors.email.message}
+                  </span>
+                )}
               </label>
 
               <label className="flex flex-col gap-1.5">
@@ -133,9 +144,14 @@ export function TourForm() {
                   type="tel"
                   autoComplete="tel"
                   aria-invalid={!!errors.phone}
+                  aria-describedby={errors.phone ? 'phone-error' : undefined}
                   className={fieldClassName}
                 />
-                {errors.phone && <span className="text-destructive text-xs">{errors.phone.message}</span>}
+                {errors.phone && (
+                  <span id="phone-error" role="alert" className="text-destructive text-xs">
+                    {errors.phone.message}
+                  </span>
+                )}
               </label>
 
               <label className="flex flex-col gap-1.5">
@@ -144,10 +160,13 @@ export function TourForm() {
                   {...register('preferredDate')}
                   type="date"
                   aria-invalid={!!errors.preferredDate}
+                  aria-describedby={errors.preferredDate ? 'preferred-date-error' : undefined}
                   className={fieldClassName}
                 />
                 {errors.preferredDate && (
-                  <span className="text-destructive text-xs">{errors.preferredDate.message}</span>
+                  <span id="preferred-date-error" role="alert" className="text-destructive text-xs">
+                    {errors.preferredDate.message}
+                  </span>
                 )}
               </label>
 
@@ -168,9 +187,14 @@ export function TourForm() {
                   {...register('message')}
                   rows={4}
                   aria-invalid={!!errors.message}
+                  aria-describedby={errors.message ? 'message-error' : undefined}
                   className={fieldClassName}
                 />
-                {errors.message && <span className="text-destructive text-xs">{errors.message.message}</span>}
+                {errors.message && (
+                  <span id="message-error" role="alert" className="text-destructive text-xs">
+                    {errors.message.message}
+                  </span>
+                )}
               </label>
 
               <div className="sm:col-span-2">

@@ -14,7 +14,7 @@ export function ArchitectureCell() {
       <div aria-hidden className="from-obsidian via-obsidian/70 absolute inset-0 bg-gradient-to-t to-transparent" />
 
       <div className="relative z-10">
-        <span className={eyebrowClassName}>Architecture</span>
+        <h2 className={eyebrowClassName}>Architecture</h2>
         <p className="text-foreground mt-2 font-serif text-xl">Light, mass, and quiet material honesty</p>
         <p className="text-muted-foreground mt-1 text-sm">{facadeMaterials}</p>
         <div className="border-gold/30 text-gold mt-3 inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs tracking-wide">

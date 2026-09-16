@@ -23,8 +23,10 @@ const item: Variants = {
 
 /**
  * Splits text into words/characters that reveal with a staggered
- * translateY + opacity animation. The full string is exposed once via
- * aria-label; the animated glyphs are aria-hidden to avoid double-reading.
+ * translateY + opacity animation. The full string is exposed once via a
+ * visually-hidden span (a plain `<span>` has no role that permits
+ * `aria-label`, so the real text goes in the DOM instead); the animated
+ * glyphs are grouped under one `aria-hidden` wrapper to avoid double-reading.
  */
 export function KineticText({ text, className, delay = 0, splitBy = 'word' }: KineticTextProps) {
   const parts = splitBy === 'word' ? text.split(' ') : text.split('')
@@ -36,21 +38,23 @@ export function KineticText({ text, className, delay = 0, splitBy = 'word' }: Ki
       viewport={{ once: true }}
       variants={container}
       transition={{ delayChildren: delay }}
-      aria-label={text}
       className={cn('inline', className)}
     >
-      {parts.map((part, index) => (
-        <span key={index} aria-hidden className="inline-block overflow-hidden align-bottom">
-          <motion.span
-            variants={item}
-            transition={{ duration: duration.base, ease: easeLuxury }}
-            className="inline-block"
-          >
-            {part === '' ? ' ' : part}
-            {splitBy === 'word' && index < parts.length - 1 ? ' ' : ''}
-          </motion.span>
-        </span>
-      ))}
+      <span className="sr-only">{text}</span>
+      <span aria-hidden>
+        {parts.map((part, index) => (
+          <span key={index} className="inline-block overflow-hidden align-bottom">
+            <motion.span
+              variants={item}
+              transition={{ duration: duration.base, ease: easeLuxury }}
+              className="inline-block"
+            >
+              {part === '' ? ' ' : part}
+              {splitBy === 'word' && index < parts.length - 1 ? ' ' : ''}
+            </motion.span>
+          </span>
+        ))}
+      </span>
     </motion.span>
   )
 }

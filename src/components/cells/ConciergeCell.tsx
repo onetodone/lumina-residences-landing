@@ -6,7 +6,7 @@ import { amenityIcons, eyebrowClassName } from './cell-styles'
 export function ConciergeCell() {
   return (
     <BentoCard className="flex flex-col gap-4 p-6">
-      <span className={eyebrowClassName}>Concierge & Parking</span>
+      <h2 className={eyebrowClassName}>Concierge & Parking</h2>
       <div className="grid flex-1 grid-cols-2 gap-3">
         {conciergeAndParking.map((item) => {
           const Icon = amenityIcons[item.icon]

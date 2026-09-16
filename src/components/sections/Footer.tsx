@@ -38,7 +38,7 @@ export function Footer() {
             {socialLinks.map((social) => (
               <span
                 key={social.label}
-                aria-label={social.label}
+                aria-hidden
                 title={social.label}
                 className="border-border text-muted-foreground inline-flex size-10 items-center justify-center rounded-full border"
               >

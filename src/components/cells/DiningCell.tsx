@@ -30,7 +30,7 @@ export function DiningCell() {
       <div aria-hidden className="from-obsidian via-obsidian/65 absolute inset-0 bg-gradient-to-t to-transparent" />
 
       <div className="relative z-10">
-        <span className={eyebrowClassName}>Aura</span>
+        <h2 className={eyebrowClassName}>Aura</h2>
         <p className="text-foreground mt-2 font-serif text-xl">Rooftop dining, 38th floor</p>
         <p className="text-muted-foreground mt-1 text-sm">
           Panoramic dining above the harbor, open to residents and their guests.
@@ -44,6 +44,7 @@ export function DiningCell() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
               transition={{ duration: duration.base, ease: easeLuxury }}
+              role="status"
               className="mt-4 flex items-center gap-2"
             >
               <Check aria-hidden className="text-status-available size-4 shrink-0" />

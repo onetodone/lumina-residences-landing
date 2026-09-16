@@ -128,7 +128,7 @@ export function ResidencesPanel() {
       className="p-6 text-left"
       trigger={
         <div className="flex h-full flex-col justify-between">
-          <span className={eyebrowClassName}>Residences</span>
+          <h2 className={eyebrowClassName}>Residences</h2>
           <div>
             <p className="text-foreground font-serif text-3xl md:text-4xl">
               {availableCount ?? '—'} <span className="text-muted-foreground text-lg">available</span>

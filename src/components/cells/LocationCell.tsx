@@ -10,7 +10,7 @@ export function LocationCell() {
   return (
     <BentoCard className="relative flex min-h-[220px] flex-col justify-start p-6">
       <div className="relative z-10">
-        <span className={eyebrowClassName}>Location</span>
+        <h2 className={eyebrowClassName}>Location</h2>
       </div>
 
       <svg

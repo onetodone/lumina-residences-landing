@@ -68,7 +68,7 @@ export function FloorPlans() {
         tabIndex={0}
         role="group"
         aria-label="Floor plan carousel, scroll or use arrow keys to browse"
-        className="scrollbar-hidden mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-2 focus-visible:outline-none"
+        className="scrollbar-hidden focus-visible:ring-ring/50 rounded-card mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-2 outline-none focus-visible:ring-3"
       >
         {floorPlans.map((plan) => {
           const Plan = PLAN_COMPONENTS[plan.type]

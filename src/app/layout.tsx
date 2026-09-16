@@ -33,9 +33,15 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
     <html lang="en" className={`${sans.variable} ${serif.variable}`}>
       <body id="top" className="min-h-screen">
         <MotionConfig reducedMotion="user">
+          <a
+            href="#main-content"
+            className="bg-gold text-obsidian rounded-control focus-visible:ring-ring/50 sr-only px-4 py-2 text-sm font-medium focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus-visible:ring-3 focus-visible:outline-none"
+          >
+            Skip to main content
+          </a>
           <NoiseOverlay />
           <Header />
-          <main>{children}</main>
+          <main id="main-content">{children}</main>
           <Footer />
         </MotionConfig>
       </body>
