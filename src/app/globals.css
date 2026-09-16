@@ -118,4 +118,123 @@
   .noise-overlay {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
+
+  /*
+   * Bento grid: DOM order always follows the mobile stacking order (see
+   * PLAN.md section 2). At md/xl, named grid-template-areas re-place cells
+   * without touching DOM order, so Tab/reading order stays logical at every
+   * breakpoint. Row heights are fixed (not auto/minmax) so an ExpandableCard
+   * closing/opening never changes row sizing elsewhere in the grid.
+   *
+   * The base layout also declares one named row per cell (auto height) even
+   * though it's a plain single-column stack — every cell sets its grid-area
+   * via a `[grid-area:<name>]` utility class, and a name with no matching
+   * area in `grid-template-areas` doesn't fall back to normal document flow:
+   * Chromium collapses every unresolved name onto the same implicit cell,
+   * stacking all cards on top of each other. Naming every row here keeps
+   * each area resolvable at every breakpoint.
+   */
+  .bento-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'hero'
+      'stats'
+      'residences'
+      'aura'
+      'wellness'
+      'smart-home'
+      'architecture'
+      'location'
+      'concierge';
+  }
+
+  @media (min-width: 768px) {
+    .bento-grid {
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(8, 200px);
+      grid-template-areas:
+        'hero hero hero hero hero hero'
+        'hero hero hero hero hero hero'
+        'stats stats stats residences residences residences'
+        'aura aura aura architecture architecture architecture'
+        'wellness wellness wellness smart-home smart-home smart-home'
+        'wellness wellness wellness smart-home smart-home smart-home'
+        'location location location location location location'
+        'concierge concierge concierge concierge concierge concierge';
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .bento-grid {
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(5, 220px);
+      grid-template-areas:
+        'hero hero hero hero hero hero hero hero wellness wellness wellness wellness'
+        'hero hero hero hero hero hero hero hero wellness wellness wellness wellness'
+        'stats stats stats stats residences residences residences residences aura aura aura aura'
+        'smart-home smart-home smart-home smart-home architecture architecture architecture architecture concierge concierge concierge concierge'
+        'smart-home smart-home smart-home smart-home location location location location location location location location';
+    }
+  }
+
+  /* Glass surface + 1px gradient border (white → transparent), independent of hover state. */
+  .bento-surface {
+    position: relative;
+    border: 1px solid transparent;
+    background:
+      linear-gradient(var(--glass-fill), var(--glass-fill)) padding-box,
+      linear-gradient(180deg, rgb(255 255 255 / 0.16), rgb(255 255 255 / 0)) border-box;
+  }
+
+  /*
+   * Pointer glow + hover lift. --glow-x/--glow-y are written directly to the
+   * DOM by usePointerGlow (no React state), so this never causes a re-render.
+   * Disabled on touch (no hover/imprecise pointer) and under reduced motion.
+   */
+  .bento-interactive {
+    transition:
+      transform var(--duration-base) var(--ease-luxury),
+      box-shadow var(--duration-base) var(--ease-luxury);
+  }
+
+  .bento-interactive::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    opacity: 0;
+    background: radial-gradient(
+      280px circle at var(--glow-x, 50%) var(--glow-y, 50%),
+      var(--gold-soft),
+      transparent 70%
+    );
+    transition: opacity var(--duration-fast) var(--ease-luxury);
+    pointer-events: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .bento-interactive:hover {
+      transform: translateY(-3px) scale(1.015);
+      box-shadow: var(--shadow-elevated);
+    }
+    .bento-interactive:hover::after {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bento-interactive,
+    .bento-interactive::after {
+      transition: none;
+    }
+    .bento-interactive:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    .bento-interactive:hover::after {
+      opacity: 0;
+    }
+  }
 }
