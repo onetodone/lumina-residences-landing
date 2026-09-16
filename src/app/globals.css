@@ -283,4 +283,14 @@
       opacity: 0;
     }
   }
+
+  /* Hides the native scrollbar on the FloorPlans carousel track while keeping it scrollable by drag/touch/keyboard. */
+  .scrollbar-hidden {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
 }

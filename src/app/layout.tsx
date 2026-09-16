@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { MotionConfig } from 'motion/react'
+import { Footer } from '@/components/sections/Footer'
 import { Header } from '@/components/sections/Header'
 import { NoiseOverlay } from '@/components/noise/NoiseOverlay'
 import { siteConfig } from '@/content/site'
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
           <NoiseOverlay />
           <Header />
           <main>{children}</main>
+          <Footer />
         </MotionConfig>
       </body>
     </html>
