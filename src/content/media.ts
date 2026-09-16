@@ -5,8 +5,8 @@ export type MediaSlot = {
   height: number
 }
 
-function slot(alt: string, width: number, height: number): MediaSlot {
-  return { src: null, alt, width, height }
+function slot(alt: string, width: number, height: number, src: string | null = null): MediaSlot {
+  return { src, alt, width, height }
 }
 
 export const media = {

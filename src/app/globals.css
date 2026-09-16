@@ -257,4 +257,30 @@
       animation: none;
     }
   }
+
+  /* Pulsing ring behind each Location cell marker (transform + opacity only). */
+  .map-marker-ping {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: map-marker-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  @keyframes map-marker-ping {
+    0% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+    75%,
+    100% {
+      transform: scale(2.4);
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .map-marker-ping {
+      animation: none;
+      opacity: 0;
+    }
+  }
 }
