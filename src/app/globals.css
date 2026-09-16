@@ -1,0 +1,121 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* shadcn semantic roles, remapped to the Lumina dark-luxury palette */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Lumina brand tokens (see PLAN.md section 3) */
+  --color-obsidian: var(--obsidian);
+  --color-graphite: var(--graphite);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-glass-fill: var(--glass-fill);
+  --color-status-available: var(--status-available);
+  --color-status-reserved: var(--status-reserved);
+  --color-status-sold: var(--status-sold);
+
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-instrument);
+
+  /* Named to avoid overriding Tailwind's own rounded-sm/md/lg scale */
+  --radius-control: 16px;
+  --radius-card: 24px;
+  --radius-panel: 32px;
+
+  /* Named to avoid overriding Tailwind's own shadow-sm */
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-elevated: 0 20px 60px -15px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.06);
+
+  --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root {
+  color-scheme: dark;
+
+  --obsidian: #0a0a0b;
+  --graphite: #141416;
+  --gold: #c9a96e;
+  --gold-soft: rgb(201 169 110 / 0.15);
+  --glass-fill: rgb(20 20 22 / 0.55);
+  --status-available: #7fb88f;
+  --status-reserved: #c9a96e;
+  --status-sold: #8a8680;
+
+  --background: var(--obsidian);
+  --foreground: #f5f3ef;
+  --card: var(--graphite);
+  --card-foreground: var(--foreground);
+  --popover: var(--graphite);
+  --popover-foreground: var(--foreground);
+  --primary: var(--gold);
+  --primary-foreground: var(--obsidian);
+  --secondary: var(--graphite);
+  --secondary-foreground: var(--foreground);
+  --muted: #1c1c1f;
+  --muted-foreground: #9a9691;
+  --accent: var(--gold-soft);
+  --accent-foreground: var(--foreground);
+  --destructive: #c9695f;
+  --border: rgb(255 255 255 / 0.08);
+  --input: rgb(255 255 255 / 0.08);
+  --ring: var(--gold);
+
+  /* sticky header height, shared between Header.tsx and html's scroll-padding-top below */
+  --header-height: 4rem;
+  --header-height-md: 5rem;
+
+  /* motion durations: not a Tailwind theme namespace, referenced via duration-(--duration-base) etc; see src/lib/motion.ts for the JS-side equivalents */
+  --duration-fast: 200ms;
+  --duration-base: 600ms;
+  --duration-slow: 900ms;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  html {
+    @apply font-sans;
+    scroll-padding-top: var(--header-height);
+  }
+  @media (min-width: 768px) {
+    html {
+      scroll-padding-top: var(--header-height-md);
+    }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}
+
+@layer utilities {
+  .noise-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
