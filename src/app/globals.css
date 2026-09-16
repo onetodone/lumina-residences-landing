@@ -237,4 +237,24 @@
       opacity: 0;
     }
   }
+
+  /* Slow ambient zoom for background imagery (transform only). */
+  .ken-burns {
+    animation: ken-burns 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes ken-burns {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.08);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ken-burns {
+      animation: none;
+    }
+  }
 }

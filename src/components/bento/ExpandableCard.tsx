@@ -119,7 +119,7 @@ export function ExpandableCard({ layoutId, label, trigger, children, className }
                     transition={{ duration: duration.base, ease: easeLuxury }}
                     className={cn(
                       bentoSurfaceClassName,
-                      'rounded-panel shadow-elevated relative w-full max-w-3xl overflow-y-auto p-6 md:p-10',
+                      'rounded-panel shadow-elevated relative flex max-h-[85vh] w-full max-w-3xl flex-col overflow-hidden',
                     )}
                   >
                     <button
@@ -133,7 +133,8 @@ export function ExpandableCard({ layoutId, label, trigger, children, className }
                     <h2 id={titleId} className="sr-only">
                       {label}
                     </h2>
-                    {children}
+                    {/* Scrolls internally so the close button (a sibling, not nested here) stays put while long content — e.g. the Residences filter + results list — scrolls underneath it. */}
+                    <div className="overflow-y-auto p-6 md:p-10">{children}</div>
                   </motion.div>
                 </>
               )}
