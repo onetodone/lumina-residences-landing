@@ -12,10 +12,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "format": "prettier --write \"**/*.{ts,tsx,mjs,css,json,md}\"",
+    "format": "prettier --write \"**/*.{ts,tsx,mts,mjs,css,json,md}\"",
     "lint": "eslint . --fix",
     "lint:ci": "eslint .",
-    "typecheck": "next typegen && tsc --noEmit"
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "vitest run"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
@@ -39,7 +40,8 @@
     "prettier": "^3.9.7",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^5.0.1"
   },
   "packageManager": "pnpm@12.4.2"
 }
