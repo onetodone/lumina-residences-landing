@@ -1,4 +1,4 @@
-import { Inter, Instrument_Serif } from 'next/font/google'
+import { Inter, Bodoni_Moda } from 'next/font/google'
 
 export const sans = Inter({
   variable: '--font-inter',
@@ -6,8 +6,8 @@ export const sans = Inter({
   display: 'swap',
 })
 
-export const serif = Instrument_Serif({
-  variable: '--font-instrument',
+export const serif = Bodoni_Moda({
+  variable: '--font-bodoni',
   subsets: ['latin'],
   weight: '400',
   style: ['normal', 'italic'],

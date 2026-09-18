@@ -9,9 +9,9 @@
     "url": "https://github.com/aholu"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "dotenv -e .env -- next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "dotenv -e .env -- next start",
     "format": "prettier --write \"**/*.{ts,tsx,mts,mjs,css,json,md}\"",
     "lint": "eslint . --fix",
     "lint:ci": "eslint .",
@@ -23,6 +23,7 @@
     "@hookform/resolvers": "^5.9.1",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.3.0",
+    "dotenv": "^17.4.2",
     "lucide-react": "^1.46.0",
     "motion": "^13.4.0",
     "next": "16.3.5",
@@ -38,6 +39,7 @@
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv-cli": "^11.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.3.5",
     "prettier": "^3.9.7",

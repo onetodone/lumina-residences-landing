@@ -2,7 +2,7 @@
 
 import { motion, type Variants } from 'motion/react'
 import { cn } from '@/lib/utils'
-import { duration, easeLuxury } from '@/lib/motion'
+import { duration } from '@/lib/motion'
 
 type KineticTextProps = {
   text: string
@@ -13,11 +13,11 @@ type KineticTextProps = {
 
 const container: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.04 } },
+  visible: { transition: { staggerChildren: 0.06 } },
 }
 
 const item: Variants = {
-  hidden: { opacity: 0, y: '100%' },
+  hidden: { opacity: 0, y: '55%' },
   visible: { opacity: 1, y: '0%' },
 }
 
@@ -41,19 +41,23 @@ export function KineticText({ text, className, delay = 0, splitBy = 'word' }: Ki
       className={cn('inline', className)}
     >
       <span className="sr-only">{text}</span>
+      {/* Separators are kept outside the inline-block word wrappers below: a space as the
+          last character inside an inline-block is treated as trailing line whitespace and
+          gets collapsed away by the browser. */}
       <span aria-hidden>
-        {parts.map((part, index) => (
-          <span key={index} className="inline-block overflow-hidden align-bottom">
-            <motion.span
-              variants={item}
-              transition={{ duration: duration.base, ease: easeLuxury }}
-              className="inline-block"
-            >
-              {part === '' ? ' ' : part}
-              {splitBy === 'word' && index < parts.length - 1 ? ' ' : ''}
-            </motion.span>
-          </span>
-        ))}
+        {parts
+          .map((part, index) => (
+            <span key={index} className="inline-block overflow-hidden align-bottom">
+              <motion.span
+                variants={item}
+                transition={{ duration: duration.slow, ease: 'easeOut' }}
+                className="inline-block"
+              >
+                {part === '' ? ' ' : part}
+              </motion.span>
+            </span>
+          ))
+          .flatMap((node, index) => (splitBy === 'word' && index < parts.length - 1 ? [node, ' '] : [node]))}
       </span>
     </motion.span>
   )
