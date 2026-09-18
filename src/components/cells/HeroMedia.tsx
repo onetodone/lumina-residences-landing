@@ -13,6 +13,14 @@ const PLAYBACK_RATE = 0.6
  * 4B.1 / section 6. Plays once at `PLAYBACK_RATE` and stops on the final
  * frame instead of looping. Reduced motion pauses the video rather than
  * never starting it, so a poster frame is still shown.
+ *
+ * Playback is triggered imperatively instead of via the `autoPlay` attribute:
+ * React's server-rendered markup omits the `muted` attribute even though the
+ * `muted` prop is set (a long-standing React SSR gap), so a native
+ * `autoPlay` start would see an unmuted video at parse time and mobile
+ * browsers — iOS Safari in particular — block it outright, leaving only the
+ * poster frame. Setting `.muted` on the element ourselves before calling
+ * `.play()` sidesteps that gap.
  */
 export function HeroMedia() {
   const prefersReducedMotion = useReducedMotion()
@@ -21,6 +29,7 @@ export function HeroMedia() {
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
+    video.muted = true
     video.playbackRate = PLAYBACK_RATE
     if (prefersReducedMotion) video.pause()
     else video.play().catch(() => {})
@@ -33,7 +42,7 @@ export function HeroMedia() {
         aria-hidden
         muted
         playsInline
-        autoPlay
+        preload="auto"
         poster={media.heroPoster.src ?? undefined}
         className="hero-media absolute inset-0 h-full w-full object-cover"
       >
