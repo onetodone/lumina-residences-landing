@@ -35,12 +35,12 @@ export function HeroMedia() {
         playsInline
         autoPlay
         poster={media.heroPoster.src ?? undefined}
-        className="absolute inset-0 h-full w-full object-cover"
+        className="hero-media absolute inset-0 h-full w-full object-cover"
       >
         <source src={media.heroVideo.src} type="video/mp4" />
       </video>
     )
   }
 
-  return <MediaSlot slot={media.heroPoster} priority className="absolute inset-0" />
+  return <MediaSlot slot={media.heroPoster} priority className="hero-media absolute inset-0" />
 }

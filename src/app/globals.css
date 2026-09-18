@@ -193,6 +193,8 @@
    * Disabled on touch (no hover/imprecise pointer) and under reduced motion.
    */
   .bento-interactive {
+    --bento-hover-scale: 1.015;
+
     transition:
       transform var(--duration-base) var(--ease-luxury),
       box-shadow var(--duration-base) var(--ease-luxury);
@@ -216,7 +218,7 @@
 
   @media (hover: hover) and (pointer: fine) {
     .bento-interactive:hover {
-      transform: translateY(-3px) scale(1.015);
+      transform: translateY(-3px) scale(var(--bento-hover-scale));
       box-shadow: var(--shadow-elevated);
     }
     .bento-interactive:hover::after {
@@ -235,6 +237,25 @@
     }
     .bento-interactive:hover::after {
       opacity: 0;
+    }
+  }
+
+  .hero-media {
+    --hero-media-scale: 1.08;
+
+    transform: scale(var(--hero-media-scale));
+    transition: transform var(--duration-base) var(--ease-luxury);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .bento-interactive:hover .hero-media {
+      transform: scale(calc(var(--hero-media-scale) / var(--bento-hover-scale)));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-media {
+      transition: none;
     }
   }
 
