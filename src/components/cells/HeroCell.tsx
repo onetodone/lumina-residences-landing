@@ -30,11 +30,14 @@ export function HeroCell() {
 
   return (
     <BentoCard
-      // min-h on mobile fills the viewport below the page's top padding
-      // (pt-28 in page.tsx, which already clears the fixed header) so the
-      // hero reaches the bottom of the screen; md+ reverts to the grid's
-      // own row sizing.
-      className="relative flex min-h-[calc(100dvh-10rem)] flex-col justify-end p-6 md:min-h-0 md:p-10"
+      // min-h on mobile fills most of the viewport below the page's top
+      // padding (pt-28 in page.tsx clears the fixed header) so the hero
+      // reaches near the bottom of the screen; md+ reverts to the grid's
+      // own row sizing. Uses `svh` (smallest viewport height, i.e. with the
+      // mobile browser's chrome fully expanded) rather than `dvh` — `dvh`
+      // tracks the chrome hiding/showing as the page scrolls, which made
+      // this height visibly jump mid-scroll.
+      className="relative flex min-h-[calc(100svh-10rem)] flex-col justify-end p-6 md:min-h-0 md:p-10"
       onPointerEnter={() => setHovered(true)}
       onPointerLeave={() => setHovered(false)}
     >

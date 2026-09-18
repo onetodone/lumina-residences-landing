@@ -37,7 +37,7 @@ export function FloorPlans() {
   }
 
   return (
-    <section id="floor-plans" className="mx-auto max-w-[1440px] px-6 py-24 md:px-16">
+    <section id="floor-plans" className="mx-auto max-w-[1440px] px-6 py-3 md:px-16 md:py-24">
       <div className="flex items-end justify-between gap-4">
         <div>
           <span className={eyebrowClassName}>Floor Plans</span>

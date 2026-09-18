@@ -16,7 +16,7 @@ import { TourForm } from '@/components/sections/TourForm'
 export default function Home() {
   return (
     <>
-      <div className="mx-auto max-w-[1440px] px-6 pt-28 pb-24 md:px-16 md:pt-36">
+      <div className="mx-auto max-w-[1440px] px-6 pt-28 pb-3 md:px-16 md:pt-36 md:pb-24">
         <BentoGrid>
           <Reveal className="[grid-area:hero]">
             <HeroCell />

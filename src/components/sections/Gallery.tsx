@@ -57,7 +57,7 @@ export function Gallery() {
   }, [activeIndex])
 
   return (
-    <section id="gallery" className="mx-auto max-w-[1440px] px-6 py-24 md:px-16">
+    <section id="gallery" className="mx-auto max-w-[1440px] px-6 py-3 md:px-16 md:py-24">
       <span className={eyebrowClassName}>Gallery</span>
       <h2 className="text-foreground mt-2 font-serif text-3xl md:text-4xl">A closer look</h2>
 

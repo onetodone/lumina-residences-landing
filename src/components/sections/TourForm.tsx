@@ -61,7 +61,7 @@ export function TourForm() {
   }
 
   return (
-    <section id="tour" className="mx-auto max-w-[1440px] px-6 py-24 md:px-16">
+    <section id="tour" className="mx-auto max-w-[1440px] px-6 pt-3 pb-6 md:px-16 md:py-24">
       <div className={cn(bentoSurfaceClassName, 'rounded-panel mx-auto max-w-2xl p-8 md:p-12')}>
         <span className={eyebrowClassName}>Schedule a Tour</span>
         <h2 className="text-foreground mt-2 font-serif text-3xl md:text-4xl">Request a Private Tour</h2>

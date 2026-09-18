@@ -20,7 +20,10 @@ const PLAYBACK_RATE = 0.6
  * `autoPlay` start would see an unmuted video at parse time and mobile
  * browsers — iOS Safari in particular — block it outright, leaving only the
  * poster frame. Setting `.muted` on the element ourselves before calling
- * `.play()` sidesteps that gap.
+ * `.play()` sidesteps that gap. `.play()` itself is deferred until the
+ * element has at least the current frame decoded (`loadeddata`) rather than
+ * fired the instant the ref attaches — some mobile browsers behave
+ * inconsistently when the play request lands before any data has arrived.
  */
 export function HeroMedia() {
   const prefersReducedMotion = useReducedMotion()
@@ -31,8 +34,16 @@ export function HeroMedia() {
     if (!video) return
     video.muted = true
     video.playbackRate = PLAYBACK_RATE
-    if (prefersReducedMotion) video.pause()
-    else video.play().catch(() => {})
+    if (prefersReducedMotion) {
+      video.pause()
+      return
+    }
+
+    const tryPlay = () => video.play().catch(() => {})
+    if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) tryPlay()
+    else video.addEventListener('loadeddata', tryPlay, { once: true })
+
+    return () => video.removeEventListener('loadeddata', tryPlay)
   }, [prefersReducedMotion])
 
   if (media.heroVideo.src) {
