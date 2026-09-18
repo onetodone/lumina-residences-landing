@@ -36,7 +36,7 @@
   --color-status-sold: var(--status-sold);
 
   --font-sans: var(--font-inter);
-  --font-serif: var(--font-instrument);
+  --font-serif: var(--font-bodoni);
 
   /* Named to avoid overriding Tailwind's own rounded-sm/md/lg scale */
   --radius-control: 16px;

@@ -6,26 +6,7 @@ export const contentType = 'image/png'
 
 const OG_TEXT = 'Lumina Residences'
 
-async function loadInstrumentSerif() {
-  try {
-    const cssResponse = await fetch(
-      `https://fonts.googleapis.com/css2?family=Instrument+Serif&text=${encodeURIComponent(OG_TEXT)}`,
-    )
-    const css = await cssResponse.text()
-    const fontUrl = css.match(/src: url\((.+?)\) format\('(?:truetype|opentype)'\)/)?.[1]
-    if (!fontUrl) return null
-
-    const fontResponse = await fetch(fontUrl)
-    if (!fontResponse.ok) return null
-    return await fontResponse.arrayBuffer()
-  } catch {
-    return null
-  }
-}
-
 export default async function Image() {
-  const instrumentSerif = await loadInstrumentSerif()
-
   return new ImageResponse(
     <div
       style={{
@@ -43,29 +24,25 @@ export default async function Image() {
       <div
         style={{
           display: 'flex',
-          fontFamily: 'sans-serif',
-          fontSize: 20,
-          letterSpacing: 6,
-          textTransform: 'uppercase',
-          color: '#C9A96E',
-        }}
-      >
-        Harbor Quarter · Aveline
-      </div>
-      <div
-        style={{
-          display: 'flex',
           fontSize: 88,
-          fontFamily: instrumentSerif ? 'Instrument Serif' : 'serif',
+          fontFamily: 'serif',
         }}
       >
         {OG_TEXT}
       </div>
-      <div style={{ display: 'flex', fontFamily: 'sans-serif', fontSize: 28, color: '#9A9691' }}>Elevated Living</div>
+      <div
+        style={{
+          display: 'flex',
+          fontFamily: 'sans-serif',
+          fontSize: 28,
+          color: '#9A9691',
+        }}
+      >
+        Elevated Living. Defined by Design.
+      </div>
     </div>,
     {
       ...size,
-      fonts: instrumentSerif ? [{ name: 'Instrument Serif', data: instrumentSerif, style: 'normal', weight: 400 }] : [],
     },
   )
 }
