@@ -36,7 +36,7 @@ function SmartHomePanel() {
 
 export function TechnologyCell() {
   return (
-    <BentoCard className="flex h-full flex-col gap-6 p-6 md:flex-row md:gap-8 md:p-8">
+    <BentoCard className="flex h-full flex-col gap-6 p-5 md:flex-row md:gap-8 md:p-6">
       <div className="flex flex-1 flex-col gap-5">
         <div>
           <h2 className={eyebrowClassName}>{technologyIntro.eyebrow}</h2>

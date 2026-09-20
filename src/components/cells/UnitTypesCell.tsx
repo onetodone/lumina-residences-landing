@@ -29,7 +29,7 @@ export function UnitTypesCell() {
               <div className={cn('relative aspect-[4/3] md:aspect-auto', reversed && 'md:order-2')}>
                 <MediaSlot slot={plan.media} sizes="(min-width: 768px) 65vw, 100vw" className="h-full" />
               </div>
-              <div className={cn('flex flex-col justify-center p-8 md:p-10 xl:p-14', reversed && 'md:order-1')}>
+              <div className={cn('flex flex-col justify-center p-5 md:p-6 xl:p-8', reversed && 'md:order-1')}>
                 <h3 className="text-foreground font-serif text-2xl leading-tight md:text-3xl">{plan.name}</h3>
                 <p className="text-muted-foreground mt-5 text-base leading-relaxed">{plan.description}</p>
                 <p className="border-border text-gold mt-6 border-t pt-6 font-serif text-2xl md:text-3xl">

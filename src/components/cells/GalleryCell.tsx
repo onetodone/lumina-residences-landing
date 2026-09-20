@@ -57,7 +57,7 @@ export function GalleryCell() {
     <div id="gallery" className="flex flex-col gap-5">
       <SectionHeader eyebrow="Gallery" title="A Closer Look" />
 
-      <BentoCard className="p-6 md:p-8">
+      <BentoCard className="p-5 md:p-6">
         <div ref={containerRef} className="gallery-grid">
           {galleryImages.map((image) => (
             <a
