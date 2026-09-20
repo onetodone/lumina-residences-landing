@@ -11,7 +11,7 @@ export type GalleryImage = {
 }
 
 /**
- * Gallery cell images, placed after Floor Plans, in upload order
+ * Gallery cell images, placed after Unit Types, in upload order
  * (`gallery01`..`gallery09`) — matches the numbering used when the grid
  * layout was specified. `facade` is the one oversized hero tile in the
  * `.gallery-grid` layout; everything else is a single cell there.

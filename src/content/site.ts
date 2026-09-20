@@ -13,7 +13,7 @@ export const siteConfig = {
 export const navLinks = [
   { label: 'Investment', href: '#investment' },
   { label: 'Facilities', href: '#facilities' },
-  { label: 'Floor Plans', href: '#floor-plans' },
+  { label: 'Unit Types', href: '#unit-types' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Location', href: '#location' },
   { label: 'Contact', href: '#tour' },

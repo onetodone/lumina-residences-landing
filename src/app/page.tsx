@@ -1,6 +1,5 @@
 import { BentoGrid } from '@/components/bento/BentoGrid'
 import { DeveloperCell } from '@/components/cells/DeveloperCell'
-import { FloorPlansCell } from '@/components/cells/FloorPlansCell'
 import { GalleryCell } from '@/components/cells/GalleryCell'
 import { HeroCell } from '@/components/cells/HeroCell'
 import { IconTileCell } from '@/components/cells/IconTileCell'
@@ -9,10 +8,12 @@ import { PaymentPlanCell } from '@/components/cells/InvestmentTimelineCell'
 import { LocationCell } from '@/components/cells/LocationCell'
 import { HandoverMetricCell, ResidencesMetricCell } from '@/components/cells/MetricCell'
 import { TechnologyCell } from '@/components/cells/TechnologyCell'
+import { UnitTypesCell } from '@/components/cells/UnitTypesCell'
 import { Reveal } from '@/components/motion/Reveal'
+import { SectionHeader } from '@/components/shared/SectionHeader'
 import { TourForm } from '@/components/sections/TourForm'
 import { facilitiesAmenities } from '@/content/amenities'
-import { investmentHighlights } from '@/content/investment'
+import { investmentHighlights, investmentIntro } from '@/content/investment'
 
 const facilitySpa = facilitiesAmenities.find((item) => item.id === 'spa')!
 const facilityPerformance = facilitiesAmenities.find((item) => item.id === 'performance-studio')!
@@ -56,6 +57,13 @@ export default function Home() {
         </Reveal>
 
         {/* Data Grid */}
+        <Reveal className="[grid-area:invest-header]">
+          <SectionHeader
+            eyebrow={investmentIntro.eyebrow}
+            title={investmentIntro.heading}
+            description={investmentIntro.description}
+          />
+        </Reveal>
         <Reveal className="[grid-area:invest-yield]">
           <YieldStatCell />
         </Reveal>
@@ -70,8 +78,8 @@ export default function Home() {
         </Reveal>
 
         {/* Layout Grid */}
-        <Reveal className="min-w-0 [grid-area:floor-plans]">
-          <FloorPlansCell />
+        <Reveal className="[grid-area:unit-types]">
+          <UnitTypesCell />
         </Reveal>
 
         {/* Gallery */}
