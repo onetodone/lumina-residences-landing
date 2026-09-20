@@ -1,6 +1,7 @@
 import { BentoGrid } from '@/components/bento/BentoGrid'
 import { DeveloperCell } from '@/components/cells/DeveloperCell'
 import { FloorPlansCell } from '@/components/cells/FloorPlansCell'
+import { GalleryCell } from '@/components/cells/GalleryCell'
 import { HeroCell } from '@/components/cells/HeroCell'
 import { IconTileCell } from '@/components/cells/IconTileCell'
 import { AppreciationStatCell, YieldStatCell } from '@/components/cells/InvestmentStatCell'
@@ -71,6 +72,11 @@ export default function Home() {
         {/* Layout Grid */}
         <Reveal className="min-w-0 [grid-area:floor-plans]">
           <FloorPlansCell />
+        </Reveal>
+
+        {/* Gallery */}
+        <Reveal className="[grid-area:gallery]">
+          <GalleryCell />
         </Reveal>
 
         {/* Closing Grid */}
