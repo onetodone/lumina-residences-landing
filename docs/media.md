@@ -12,15 +12,11 @@ The visual brief for every render: quiet luxury, architectural minimalism,
 deep obsidian/graphite tones with soft champagne-gold accents, light and
 water as recurring themes. No text or logos baked into the image.
 
-| Slot (`media.ts` key) | File name                           | Recommended size              | AI-render prompt                                                                                                                                                                |
-| --------------------- | ----------------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `heroPoster`          | `hero-poster.jpg`                   | 1920×1080                     | Twin residential towers at dusk beside a calm harbor, warm interior lighting in a few windows, deep blue-black sky, minimalist architecture, cinematic wide shot, quiet luxury. |
-| `heroVideo`           | `hero-video.mp4`                    | 1920×1080, 10–20s loop, muted | Slow static or slow-dolly aerial shot of the two towers and waterfront at dusk, gentle water reflections, no people, seamless loop.                                             |
-| `aura`                | `aura.jpg`                          | 1200×1500                     | Panoramic rooftop restaurant interior at night, floor-to-ceiling windows over a city skyline, warm low lighting, minimalist furniture, empty of people.                         |
-| `wellness`            | `wellness.jpg`                      | 1200×1500                     | Moody infinity pool at dusk on a rooftop wellness deck, dark stone tiles, soft ambient lighting, steam rising, no people.                                                       |
-| `smartHomeApp`        | `smart-home-app.jpg`                | 750×1624                      | Close-up of a modern smartphone resting on a minimalist marble surface, screen off or blurred, soft daylight — used as a background behind the mock app UI.                     |
-| `architecture`        | `architecture.jpg`                  | 1200×1500                     | Detail shot of a minimalist facade: stone, glass, and bronze fins, sharp shadows from low sun, architectural photography style.                                                 |
-| `gallery`             | `gallery-01.jpg` … `gallery-08.jpg` | 1600×1200 each                | A varied set: lobby, corridor, kitchen, bathroom, balcony view, courtyard, co-working lounge, kids' club — all quiet-luxury interiors, consistent warm/cool grading.            |
+| Slot (`media.ts` key) | File name         | Recommended size              | AI-render prompt                                                                                                                                                                |
+| --------------------- | ----------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `heroPoster`          | `hero-poster.jpg` | 1920×1080                     | Twin residential towers at dusk beside a calm harbor, warm interior lighting in a few windows, deep blue-black sky, minimalist architecture, cinematic wide shot, quiet luxury. |
+| `heroVideo`           | `hero-video.mp4`  | 1920×1080, 10–20s loop, muted | Slow static or slow-dolly aerial shot of the two towers and waterfront at dusk, gentle water reflections, no people, seamless loop.                                             |
+| `facilities`          | `facilities.jpg`  | 1200×1500                     | Moody spa/wellness deck at dusk — dark stone tiles, soft ambient lighting, steam rising, no people.                                                                             |
 
 Not covered by this manifest (generated in code, not stored as files):
 

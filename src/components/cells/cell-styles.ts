@@ -1,30 +1,32 @@
 import {
-  BatteryCharging,
-  BellRing,
-  CarFront,
-  Droplets,
+  Coffee,
   Dumbbell,
+  EyeOff,
   Flower2,
-  ShieldCheck,
-  Snowflake,
-  Sparkles,
-  Waves,
+  KeyRound,
+  Leaf,
+  LineChart,
+  Smartphone,
+  Sofa,
+  TrendingUp,
+  Wallet,
   type LucideIcon,
 } from 'lucide-react'
 
 /** Shared eyebrow label style — small uppercase gold caption used at the top of every bento cell. */
 export const eyebrowClassName = 'text-gold text-xs tracking-[0.2em] uppercase'
 
-/** Maps `Amenity.icon` string values (content/amenities.ts) to their lucide-react component. */
-export const amenityIcons: Record<string, LucideIcon> = {
-  Waves,
-  Dumbbell,
-  Snowflake,
-  Droplets,
+/** Maps `FeatureItem.icon` string values (content/amenities.ts, content/investment.ts, content/technology.ts) to their lucide-react component. */
+export const featureIcons: Record<string, LucideIcon> = {
   Flower2,
-  BellRing,
-  Sparkles,
-  CarFront,
-  BatteryCharging,
-  ShieldCheck,
+  Dumbbell,
+  Sofa,
+  Coffee,
+  TrendingUp,
+  LineChart,
+  Wallet,
+  KeyRound,
+  Smartphone,
+  EyeOff,
+  Leaf,
 }

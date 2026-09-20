@@ -120,11 +120,15 @@
   }
 
   /*
-   * Bento grid: DOM order always follows the mobile stacking order (see
-   * PLAN.md section 2). At md/xl, named grid-template-areas re-place cells
-   * without touching DOM order, so Tab/reading order stays logical at every
-   * breakpoint. Row heights are fixed (not auto/minmax) so an ExpandableCard
-   * closing/opening never changes row sizing elsewhere in the grid.
+   * Bento Grid 2.0: 5 conceptual sections — Hero Grid (hero/metric-a/
+   * metric-b/location), Lifestyle Grid (technology/facility-1..4), Data Grid
+   * (invest-yield/invest-appreciation/invest-payment/invest-turnkey), Layout
+   * Grid (floor-plans), Closing Grid (developer/tour-form). DOM order always
+   * follows the mobile stacking order (see PLAN.md section 2). At md/xl,
+   * named grid-template-areas re-place cells without touching DOM order, so
+   * Tab/reading order stays logical at every breakpoint. Row heights are
+   * fixed (not auto/minmax) — kept for deliberate visual control (PLAN.md
+   * section 2), not because anything still needs to avoid reflow.
    *
    * The base layout also declares one named row per cell (auto height) even
    * though it's a plain single-column stack — every cell sets its grid-area
@@ -139,42 +143,71 @@
     grid-template-columns: 1fr;
     grid-template-areas:
       'hero'
-      'stats'
-      'residences'
-      'aura'
-      'wellness'
-      'smart-home'
-      'architecture'
+      'metric-a'
+      'metric-b'
       'location'
-      'concierge';
+      'technology'
+      'facility-1'
+      'facility-2'
+      'facility-3'
+      'facility-4'
+      'invest-yield'
+      'invest-appreciation'
+      'invest-payment'
+      'invest-turnkey'
+      'floor-plans'
+      'developer'
+      'tour-form';
   }
 
   @media (min-width: 768px) {
     .bento-grid {
       grid-template-columns: repeat(6, 1fr);
-      grid-template-rows: repeat(8, 200px);
+      grid-template-rows: repeat(23, 200px);
       grid-template-areas:
         'hero hero hero hero hero hero'
         'hero hero hero hero hero hero'
-        'stats stats stats residences residences residences'
-        'aura aura aura architecture architecture architecture'
-        'wellness wellness wellness smart-home smart-home smart-home'
-        'wellness wellness wellness smart-home smart-home smart-home'
+        'metric-a metric-a metric-a metric-a metric-a metric-a'
+        'metric-b metric-b metric-b metric-b metric-b metric-b'
         'location location location location location location'
-        'concierge concierge concierge concierge concierge concierge';
+        'technology technology technology technology technology technology'
+        'technology technology technology technology technology technology'
+        'facility-1 facility-1 facility-1 facility-1 facility-1 facility-1'
+        'facility-2 facility-2 facility-2 facility-2 facility-2 facility-2'
+        'facility-3 facility-3 facility-3 facility-3 facility-3 facility-3'
+        'facility-4 facility-4 facility-4 facility-4 facility-4 facility-4'
+        'invest-yield invest-yield invest-yield invest-yield invest-yield invest-yield'
+        'invest-appreciation invest-appreciation invest-appreciation invest-appreciation invest-appreciation invest-appreciation'
+        'invest-payment invest-payment invest-payment invest-payment invest-payment invest-payment'
+        'invest-turnkey invest-turnkey invest-turnkey invest-turnkey invest-turnkey invest-turnkey'
+        'floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans'
+        'floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans'
+        'developer developer developer developer developer developer'
+        'developer developer developer developer developer developer'
+        'tour-form tour-form tour-form tour-form tour-form tour-form'
+        'tour-form tour-form tour-form tour-form tour-form tour-form'
+        'tour-form tour-form tour-form tour-form tour-form tour-form'
+        'tour-form tour-form tour-form tour-form tour-form tour-form';
     }
   }
 
   @media (min-width: 1280px) {
     .bento-grid {
       grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: repeat(5, 220px);
+      grid-template-rows: repeat(12, 220px);
       grid-template-areas:
-        'hero hero hero hero hero hero hero hero wellness wellness wellness wellness'
-        'hero hero hero hero hero hero hero hero wellness wellness wellness wellness'
-        'stats stats stats stats residences residences residences residences aura aura aura aura'
-        'smart-home smart-home smart-home smart-home architecture architecture architecture architecture concierge concierge concierge concierge'
-        'smart-home smart-home smart-home smart-home location location location location location location location location';
+        'hero hero hero hero hero hero hero hero metric-a metric-a metric-b metric-b'
+        'hero hero hero hero hero hero hero hero location location location location'
+        'technology technology technology technology technology technology facility-1 facility-1 facility-1 facility-2 facility-2 facility-2'
+        'technology technology technology technology technology technology facility-3 facility-3 facility-3 facility-4 facility-4 facility-4'
+        'invest-yield invest-yield invest-yield invest-appreciation invest-appreciation invest-appreciation invest-payment invest-payment invest-payment invest-payment invest-turnkey invest-turnkey'
+        'invest-yield invest-yield invest-yield invest-appreciation invest-appreciation invest-appreciation invest-payment invest-payment invest-payment invest-payment invest-turnkey invest-turnkey'
+        'floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans'
+        'floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans'
+        'developer developer developer developer developer developer tour-form tour-form tour-form tour-form tour-form tour-form'
+        'developer developer developer developer developer developer tour-form tour-form tour-form tour-form tour-form tour-form'
+        'developer developer developer developer developer developer tour-form tour-form tour-form tour-form tour-form tour-form'
+        'developer developer developer developer developer developer tour-form tour-form tour-form tour-form tour-form tour-form';
     }
   }
 

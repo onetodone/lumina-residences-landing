@@ -1,4 +1,4 @@
-/** Stylized SVG map for the Location cell (SPEC.md section 4B.8) — coordinates are percentages within a 350×100 viewBox, not real geography. */
+/** Stylized SVG map for the Location cell — coordinates are percentages within a 350×100 viewBox, not real geography. */
 export type LocationMarker = {
   id: string
   label: string
@@ -10,7 +10,9 @@ export type LocationMarker = {
 export const siteMarker = { label: 'Lumina Residences', x: 132, y: 58 }
 
 export const locationMarkers: LocationMarker[] = [
-  { id: 'beach', label: 'Beach', travelTime: '6 min walk', x: 248, y: 34 },
-  { id: 'business', label: 'Business Center', travelTime: '12 min drive', x: 80, y: 22 },
-  { id: 'airport', label: 'Airport', travelTime: '25 min drive', x: 58, y: 82 },
+  { id: 'cbd', label: 'Central Business District', travelTime: '5 min', x: 80, y: 22 },
+  { id: 'retail', label: 'Retail & Dining', travelTime: '10 min', x: 248, y: 34 },
+  { id: 'airport', label: 'International Airport', travelTime: '15 min', x: 58, y: 82 },
 ]
+
+export const locationCaption = "An oasis of calm, just steps away from the city's pulse."
