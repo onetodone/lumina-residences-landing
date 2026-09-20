@@ -16,10 +16,11 @@ export function Footer() {
     <footer className="border-border border-t">
       <div className="mx-auto max-w-[1440px] px-6 py-10 md:px-16 md:py-16">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
-          <div>
+          <div className="max-w-sm">
             <p className="text-foreground font-serif text-2xl">{siteConfig.name}</p>
-            <p className="text-muted-foreground mt-2 text-sm">{siteConfig.developer}</p>
-            <p className="text-muted-foreground mt-1 text-sm">1 Harbor Quarter Promenade, Aveline</p>
+            <p className="text-muted-foreground mt-2 text-sm font-medium">{siteConfig.developer}</p>
+            <p className="text-muted-foreground mt-2 text-sm">{siteConfig.developerBlurb}</p>
+            <p className="text-muted-foreground mt-3 text-sm">1 Harbor Quarter Promenade, Aveline</p>
           </div>
 
           <nav aria-label="Footer" className="flex flex-col gap-2 text-sm">

@@ -1,72 +1,86 @@
 import { BentoGrid } from '@/components/bento/BentoGrid'
-import { Reveal } from '@/components/motion/Reveal'
+import { DeveloperCell } from '@/components/cells/DeveloperCell'
+import { FloorPlansCell } from '@/components/cells/FloorPlansCell'
 import { HeroCell } from '@/components/cells/HeroCell'
-import { StatsCell } from '@/components/cells/StatsCell'
-import { ResidencesCell } from '@/components/cells/ResidencesCell'
-import { DiningCell } from '@/components/cells/DiningCell'
-import { WellnessCell } from '@/components/cells/WellnessCell'
-import { SmartHomeCell } from '@/components/cells/SmartHomeCell'
-import { ArchitectureCell } from '@/components/cells/ArchitectureCell'
+import { IconTileCell } from '@/components/cells/IconTileCell'
+import { AppreciationStatCell, YieldStatCell } from '@/components/cells/InvestmentStatCell'
+import { PaymentPlanCell } from '@/components/cells/InvestmentTimelineCell'
 import { LocationCell } from '@/components/cells/LocationCell'
-import { ConciergeCell } from '@/components/cells/ConciergeCell'
-import { FloorPlans } from '@/components/sections/FloorPlans'
-import { Gallery } from '@/components/sections/Gallery'
+import { HandoverMetricCell, ResidencesMetricCell } from '@/components/cells/MetricCell'
+import { TechnologyCell } from '@/components/cells/TechnologyCell'
+import { Reveal } from '@/components/motion/Reveal'
 import { TourForm } from '@/components/sections/TourForm'
+import { facilitiesAmenities } from '@/content/amenities'
+import { investmentHighlights } from '@/content/investment'
+
+const facilitySpa = facilitiesAmenities.find((item) => item.id === 'spa')!
+const facilityPerformance = facilitiesAmenities.find((item) => item.id === 'performance-studio')!
+const facilityLounge = facilitiesAmenities.find((item) => item.id === 'lounge')!
+const facilityCafe = facilitiesAmenities.find((item) => item.id === 'cafe')!
+const turnkeyItem = investmentHighlights.find((item) => item.id === 'management')!
 
 export default function Home() {
   return (
-    <>
-      <div className="mx-auto max-w-[1440px] px-6 pt-28 pb-3 md:px-16 md:pt-36 md:pb-24">
-        <BentoGrid>
-          <Reveal className="[grid-area:hero]">
-            <HeroCell />
-          </Reveal>
+    <div className="mx-auto max-w-[1440px] px-6 pt-28 pb-6 md:px-16 md:pt-36 md:pb-24">
+      <BentoGrid>
+        {/* Hero Grid */}
+        <Reveal className="[grid-area:hero]">
+          <HeroCell />
+        </Reveal>
+        <Reveal className="[grid-area:metric-a]" delay={0.05}>
+          <ResidencesMetricCell />
+        </Reveal>
+        <Reveal className="[grid-area:metric-b]" delay={0.1}>
+          <HandoverMetricCell />
+        </Reveal>
+        <Reveal className="[grid-area:location]" delay={0.15}>
+          <LocationCell />
+        </Reveal>
 
-          <Reveal className="[grid-area:stats]" delay={0.05}>
-            <StatsCell />
-          </Reveal>
+        {/* Lifestyle Grid */}
+        <Reveal className="[grid-area:technology]">
+          <TechnologyCell />
+        </Reveal>
+        <Reveal className="[grid-area:facility-1]" delay={0.05}>
+          <IconTileCell id="facilities" item={facilitySpa} />
+        </Reveal>
+        <Reveal className="[grid-area:facility-2]" delay={0.1}>
+          <IconTileCell item={facilityPerformance} />
+        </Reveal>
+        <Reveal className="[grid-area:facility-3]" delay={0.05}>
+          <IconTileCell item={facilityLounge} />
+        </Reveal>
+        <Reveal className="[grid-area:facility-4]" delay={0.1}>
+          <IconTileCell item={facilityCafe} />
+        </Reveal>
 
-          <Reveal className="[grid-area:residences]" delay={0.1}>
-            <ResidencesCell />
-          </Reveal>
+        {/* Data Grid */}
+        <Reveal className="[grid-area:invest-yield]">
+          <YieldStatCell />
+        </Reveal>
+        <Reveal className="[grid-area:invest-appreciation]" delay={0.05}>
+          <AppreciationStatCell />
+        </Reveal>
+        <Reveal className="[grid-area:invest-payment]" delay={0.1}>
+          <PaymentPlanCell />
+        </Reveal>
+        <Reveal className="[grid-area:invest-turnkey]" delay={0.15}>
+          <IconTileCell item={turnkeyItem} />
+        </Reveal>
 
-          <Reveal className="[grid-area:aura]" delay={0.15}>
-            <DiningCell />
-          </Reveal>
+        {/* Layout Grid */}
+        <Reveal className="min-w-0 [grid-area:floor-plans]">
+          <FloorPlansCell />
+        </Reveal>
 
-          <Reveal className="[grid-area:wellness]" delay={0.05}>
-            <WellnessCell />
-          </Reveal>
-
-          <Reveal className="[grid-area:smart-home]" delay={0.1}>
-            <SmartHomeCell />
-          </Reveal>
-
-          <Reveal className="[grid-area:architecture]" delay={0.15}>
-            <ArchitectureCell />
-          </Reveal>
-
-          <Reveal className="[grid-area:location]" delay={0.2}>
-            <LocationCell />
-          </Reveal>
-
-          <Reveal className="[grid-area:concierge]" delay={0.25}>
-            <ConciergeCell />
-          </Reveal>
-        </BentoGrid>
-      </div>
-
-      <Reveal>
-        <FloorPlans />
-      </Reveal>
-
-      <Reveal delay={0.05}>
-        <Gallery />
-      </Reveal>
-
-      <Reveal delay={0.05}>
-        <TourForm />
-      </Reveal>
-    </>
+        {/* Closing Grid */}
+        <Reveal className="[grid-area:developer]">
+          <DeveloperCell />
+        </Reveal>
+        <Reveal className="[grid-area:tour-form]" delay={0.05}>
+          <TourForm />
+        </Reveal>
+      </BentoGrid>
+    </div>
   )
 }

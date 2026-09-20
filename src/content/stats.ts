@@ -1,10 +1,11 @@
 export const keyFigures = [
-  { id: 'residences', value: 214, decimals: 0, suffix: '', label: 'Residences' },
-  { id: 'floors', value: 38, decimals: 0, suffix: '', label: 'Floors, North Tower' },
-  { id: 'courtyard', value: 1.2, decimals: 1, suffix: ' ha', label: 'Landscaped courtyard' },
+  { id: 'residences', value: 48, decimals: 0, suffix: '', label: 'Exclusive Boutique Residences' },
+  { id: 'layouts', value: 3, decimals: 0, suffix: '', label: 'Bespoke Layout Configurations' },
+  { id: 'windows', value: 3.2, decimals: 1, suffix: 'm', label: 'Floor-to-Ceiling Windows' },
+  { id: 'ecosystem', value: 1, decimals: 0, suffix: '', label: 'Unified Smart Home Ecosystem' },
 ] as const
 
 export const completion = {
   label: 'Q4 2027',
-  caption: 'Estimated completion',
+  caption: 'Scheduled Handover',
 }

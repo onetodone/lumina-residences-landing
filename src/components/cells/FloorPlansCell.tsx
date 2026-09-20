@@ -2,31 +2,25 @@
 
 import { useRef } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { bentoSurfaceClassName } from '@/components/bento/BentoCard'
-import { eyebrowClassName } from '@/components/cells/cell-styles'
+import { BentoCard } from '@/components/bento/BentoCard'
 import { OneBedPlan } from '@/components/floor-plans/OneBedPlan'
-import { PenthousePlan } from '@/components/floor-plans/PenthousePlan'
 import { StudioPlan } from '@/components/floor-plans/StudioPlan'
-import { ThreeBedPlan } from '@/components/floor-plans/ThreeBedPlan'
 import { TwoBedPlan } from '@/components/floor-plans/TwoBedPlan'
-import { floorPlans } from '@/content/floor-plans'
-import type { ResidenceType } from '@/data/types'
-import { formatUsd } from '@/lib/format'
+import { floorPlans, type FloorPlanType } from '@/content/floor-plans'
 import { cn } from '@/lib/utils'
+import { eyebrowClassName } from './cell-styles'
 
-const PLAN_COMPONENTS: Record<ResidenceType, typeof StudioPlan> = {
+const PLAN_COMPONENTS: Record<FloorPlanType, typeof StudioPlan> = {
   studio: StudioPlan,
   '1-bed': OneBedPlan,
   '2-bed': TwoBedPlan,
-  '3-bed': ThreeBedPlan,
-  penthouse: PenthousePlan,
 }
 
 const navButtonClassName =
   'border-border text-muted-foreground hover:text-foreground hover:border-gold/40 inline-flex size-10 items-center justify-center rounded-full border transition-colors duration-(--duration-fast)'
 
-/** Floor plan carousel: horizontal scroll-snap track of apartment types with area, price-from, and an SVG plan (SPEC.md section 4C). */
-export function FloorPlans() {
+/** Floor Plans cell: horizontal scroll-snap carousel of the 3 apartment types with area, description, and an SVG plan (NEW_STRUCTURE.md "Floor Plans"). */
+export function FloorPlansCell() {
   const trackRef = useRef<HTMLDivElement>(null)
 
   const scrollByCard = (direction: 1 | -1) => {
@@ -37,11 +31,11 @@ export function FloorPlans() {
   }
 
   return (
-    <section id="floor-plans" className="mx-auto max-w-[1440px] px-6 py-3 md:px-16 md:py-24">
+    <BentoCard id="floor-plans" className="flex min-w-0 flex-col p-6 md:p-8">
       <div className="flex items-end justify-between gap-4">
         <div>
-          <span className={eyebrowClassName}>Floor Plans</span>
-          <h2 className="text-foreground mt-2 font-serif text-3xl md:text-4xl">Five ways to live at Lumina</h2>
+          <h2 className={eyebrowClassName}>Floor Plans</h2>
+          <h3 className="text-foreground mt-2 font-serif text-xl md:text-2xl">Spaces that Breathe</h3>
         </div>
         <div className="hidden gap-2 md:flex">
           <button
@@ -63,31 +57,35 @@ export function FloorPlans() {
         </div>
       </div>
 
+      <p className="text-muted-foreground mt-2 max-w-2xl text-sm">
+        Choose from 3 bespoke layouts. Every residence features warm oak flooring, matte-finish bespoke cabinetry, and
+        spa-inspired bathrooms with brushed gunmetal fixtures.
+      </p>
+
       <div
         ref={trackRef}
         tabIndex={0}
         role="group"
         aria-label="Floor plan carousel, scroll or use arrow keys to browse"
-        className="scrollbar-hidden focus-visible:ring-ring/50 rounded-card mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-2 outline-none focus-visible:ring-3"
+        className="scrollbar-hidden focus-visible:ring-ring/50 rounded-card mt-6 flex flex-1 snap-x snap-mandatory gap-5 overflow-x-auto pb-2 outline-none focus-visible:ring-3"
       >
         {floorPlans.map((plan) => {
           const Plan = PLAN_COMPONENTS[plan.type]
           return (
             <article
               key={plan.type}
-              className={cn(bentoSurfaceClassName, 'rounded-card w-[280px] shrink-0 snap-start p-6 sm:w-[340px]')}
+              className={cn(
+                'border-border rounded-control w-[220px] shrink-0 snap-start border bg-white/[0.03] p-5 sm:w-[260px]',
+              )}
             >
               <Plan className="h-auto w-full" />
-              <h3 className="text-foreground mt-4 font-serif text-xl">{plan.name}</h3>
-              <p className="text-muted-foreground mt-1 text-sm">{plan.description}</p>
-              <div className="border-border mt-4 flex items-center justify-between border-t pt-4 text-sm">
-                <span className="text-muted-foreground">{plan.areaSqm} m²</span>
-                <span className="text-gold">From {formatUsd(plan.priceFromUsd)}</span>
-              </div>
+              <h4 className="text-foreground mt-3 font-serif text-lg">{plan.name}</h4>
+              <p className="text-muted-foreground mt-1 text-xs">{plan.description}</p>
+              <p className="border-border text-muted-foreground mt-3 border-t pt-3 text-sm">{plan.areaSqm} m²</p>
             </article>
           )
         })}
       </div>
-    </section>
+    </BentoCard>
   )
 }

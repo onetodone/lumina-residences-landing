@@ -1,31 +1,32 @@
-import type { Amenity } from '@/data/types'
+import type { FeatureItem } from './types'
 
-/** Wellness cell — revealed line by line (SPEC.md section 4B.5). Icon values are lucide-react export names. */
-export const wellnessAmenities: Amenity[] = [
-  { id: 'pool', name: 'Infinity Pool', description: 'Heated, harbor-facing, open until midnight', icon: 'Waves' },
+/** Facilities cell — revealed line by line (NEW_STRUCTURE.md "Facilities"). Icon values are lucide-react export names. */
+export const facilitiesAmenities: FeatureItem[] = [
   {
-    id: 'gym',
-    name: 'Fitness Studio',
-    description: 'Free weights, cardio floor, and a Pilates room',
+    id: 'spa',
+    name: 'The Sanctuary Spa',
+    description:
+      'A minimalist thermal suite featuring a Himalayan salt sauna, eucalyptus steam room, and sensory showers.',
+    icon: 'Flower2',
+  },
+  {
+    id: 'performance-studio',
+    name: 'Performance Studio',
+    description:
+      'A high-spec, natural-light fitness center equipped with advanced cardio and functional training gear.',
     icon: 'Dumbbell',
   },
-  { id: 'cryo', name: 'Cryo-Sauna', description: 'Whole-body cryotherapy and a Finnish sauna', icon: 'Snowflake' },
-  { id: 'hammam', name: 'Hammam', description: 'Steam room and hammam ritual suite', icon: 'Droplets' },
-  { id: 'yoga', name: 'Yoga Deck', description: 'Open-air studio overlooking the courtyard', icon: 'Flower2' },
-]
-
-/** Concierge & Parking cell — two nested sub-tiles (SPEC.md section 4B.9). */
-export const conciergeAndParking: Amenity[] = [
   {
-    id: 'concierge',
-    name: 'Concierge',
-    description: '24/7 front desk, housekeeping on request, valet on arrival',
-    icon: 'BellRing',
+    id: 'lounge',
+    name: 'Lumina Lounge & Co-Work',
+    description: 'An executive-grade resident workspace with soundproof pods and a boardroom for seamless remote work.',
+    icon: 'Sofa',
   },
   {
-    id: 'parking',
-    name: 'Parking',
-    description: 'EV charging in every bay, two secure levels below grade',
-    icon: 'CarFront',
+    id: 'cafe',
+    name: 'Artisan Café',
+    description:
+      'A ground-floor specialty coffee bar exclusive to residents and their guests, serving organic blends and daily fresh pastries.',
+    icon: 'Coffee',
   },
 ]
