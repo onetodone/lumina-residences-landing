@@ -1,6 +1,5 @@
 import type { FeatureItem } from './types'
 
-/** Technology & Construction cell (NEW_STRUCTURE.md "Technology & Construction") — merges the former Smart Home and Architecture cells into one content section. */
 export const technologyIntro = {
   eyebrow: 'Technology & Construction',
   heading: 'Built for the Future. Designed for Today.',

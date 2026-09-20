@@ -19,7 +19,6 @@ const PLAN_COMPONENTS: Record<FloorPlanType, typeof StudioPlan> = {
 const navButtonClassName =
   'border-border text-muted-foreground hover:text-foreground hover:border-gold/40 inline-flex size-10 items-center justify-center rounded-full border transition-colors duration-(--duration-fast)'
 
-/** Floor Plans cell: horizontal scroll-snap carousel of the 3 apartment types with area, description, and an SVG plan (NEW_STRUCTURE.md "Floor Plans"). */
 export function FloorPlansCell() {
   const trackRef = useRef<HTMLDivElement>(null)
 

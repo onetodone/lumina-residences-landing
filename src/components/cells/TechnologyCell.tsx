@@ -38,7 +38,6 @@ function SmartHomePanel() {
   )
 }
 
-/** Technology & Construction cell: wide Lifestyle Grid spotlight — leads with the Unified Smart Home Ecosystem stat, then Sustainable Architecture / Invisible Infrastructure, next to a decorative app-panel mock (NEW_STRUCTURE.md "Technology & Construction"). */
 export function TechnologyCell() {
   return (
     <BentoCard className="flex h-full flex-col gap-6 p-6 md:flex-row md:gap-8 md:p-8">

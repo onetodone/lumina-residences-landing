@@ -1,6 +1,5 @@
 import type { FeatureItem } from './types'
 
-/** Facilities cell — revealed line by line (NEW_STRUCTURE.md "Facilities"). Icon values are lucide-react export names. */
 export const facilitiesAmenities: FeatureItem[] = [
   {
     id: 'spa',

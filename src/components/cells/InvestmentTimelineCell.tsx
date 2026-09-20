@@ -4,7 +4,6 @@ import { eyebrowClassName, featureIcons } from './cell-styles'
 
 const paymentItem = investmentHighlights.find((item) => item.id === 'payment-plan')!
 
-/** Flexible Payment Plan tile — 40% construction / 60% handover as a horizontal timeline (NEW_STRUCTURE.md "Investment Model"). */
 export function PaymentPlanCell() {
   const Icon = featureIcons[paymentItem.icon]
 

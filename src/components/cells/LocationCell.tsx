@@ -7,7 +7,6 @@ const VIEW_HEIGHT = 100
 
 const cbdMarker = locationMarkers.find((marker) => marker.id === 'cbd')!
 
-/** Location teaser: compact card closing out the Hero Grid's right column — condensed from the former full-width Location section down to a heading, one travel-time stat, and a stylized SVG map (no external map API) (NEW_STRUCTURE.md "Location"). */
 export function LocationCell() {
   return (
     <BentoCard id="location" className="relative flex h-full flex-col justify-between p-5 md:p-6">

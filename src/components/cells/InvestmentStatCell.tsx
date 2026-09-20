@@ -45,7 +45,6 @@ function InvestmentStatCard({ id, icon, figure, label, description }: Investment
 const yieldItem = investmentHighlights.find((item) => item.id === 'yield')!
 const appreciationItem = investmentHighlights.find((item) => item.id === 'appreciation')!
 
-/** High Yield Potential accent tile — leads the Data Grid (NEW_STRUCTURE.md "Investment Model"). */
 export function YieldStatCell() {
   return (
     <InvestmentStatCard
@@ -58,7 +57,6 @@ export function YieldStatCell() {
   )
 }
 
-/** Capital Appreciation accent tile (NEW_STRUCTURE.md "Investment Model"). */
 export function AppreciationStatCell() {
   return (
     <InvestmentStatCard

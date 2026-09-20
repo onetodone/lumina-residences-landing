@@ -1,6 +1,5 @@
 import type { FeatureItem } from './types'
 
-/** Investment Model cell (NEW_STRUCTURE.md "Investment Model"). */
 export const investmentIntro = {
   eyebrow: 'Investment Model',
   heading: 'Intelligent Asset. Tangible Growth.',
