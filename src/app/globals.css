@@ -122,15 +122,18 @@
   /*
    * Bento Grid 2.0: 5 conceptual sections — Hero Grid (hero/metric-a/
    * metric-b/location), Lifestyle Grid (technology/facility-1..4), Data Grid
-   * (invest-yield/invest-appreciation/invest-payment/invest-turnkey), Layout
-   * Grid (floor-plans), Closing Grid (developer/tour-form) — plus a
-   * masonry Gallery cell after Floor Plans (added later, not part of the
-   * original 5-section design). DOM order always
+   * (invest-header/invest-yield/invest-appreciation/invest-payment/
+   * invest-turnkey), Layout Grid (unit-types), Closing Grid (developer/
+   * tour-form) — plus a masonry Gallery cell after Unit Types (added later,
+   * not part of the original 5-section design). DOM order always
    * follows the mobile stacking order (see PLAN.md section 2). At md/xl,
    * named grid-template-areas re-place cells without touching DOM order, so
-   * Tab/reading order stays logical at every breakpoint. Row heights are
-   * fixed (not auto/minmax) — kept for deliberate visual control (PLAN.md
-   * section 2), not because anything still needs to avoid reflow.
+   * Tab/reading order stays logical at every breakpoint. Most row heights
+   * are fixed pixel values, kept for deliberate visual control (PLAN.md
+   * section 2); invest-header/unit-types/gallery are `auto`/`minmax(_, auto)`
+   * instead, since their content height varies (SectionHeader copy length,
+   * unit-type block count, photo grid size) — each is the exclusive
+   * occupant of its row(s), so growing them doesn't disturb any fixed row.
    *
    * The base layout also declares one named row per cell (auto height) even
    * though it's a plain single-column stack — every cell sets its grid-area
@@ -153,11 +156,12 @@
       'facility-2'
       'facility-3'
       'facility-4'
+      'invest-header'
       'invest-yield'
       'invest-appreciation'
       'invest-payment'
       'invest-turnkey'
-      'floor-plans'
+      'unit-types'
       'gallery'
       'developer'
       'tour-form';
@@ -166,7 +170,7 @@
   @media (min-width: 768px) {
     .bento-grid {
       grid-template-columns: repeat(6, 1fr);
-      grid-template-rows: repeat(26, 200px);
+      grid-template-rows: repeat(11, 200px) auto repeat(4, 200px) repeat(5, minmax(200px, auto)) repeat(6, 200px);
       grid-template-areas:
         'hero hero hero hero hero hero'
         'hero hero hero hero hero hero'
@@ -179,12 +183,13 @@
         'facility-2 facility-2 facility-2 facility-2 facility-2 facility-2'
         'facility-3 facility-3 facility-3 facility-3 facility-3 facility-3'
         'facility-4 facility-4 facility-4 facility-4 facility-4 facility-4'
+        'invest-header invest-header invest-header invest-header invest-header invest-header'
         'invest-yield invest-yield invest-yield invest-yield invest-yield invest-yield'
         'invest-appreciation invest-appreciation invest-appreciation invest-appreciation invest-appreciation invest-appreciation'
         'invest-payment invest-payment invest-payment invest-payment invest-payment invest-payment'
         'invest-turnkey invest-turnkey invest-turnkey invest-turnkey invest-turnkey invest-turnkey'
-        'floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans'
-        'floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans'
+        'unit-types unit-types unit-types unit-types unit-types unit-types'
+        'unit-types unit-types unit-types unit-types unit-types unit-types'
         'gallery gallery gallery gallery gallery gallery'
         'gallery gallery gallery gallery gallery gallery'
         'gallery gallery gallery gallery gallery gallery'
@@ -200,15 +205,16 @@
   @media (min-width: 1280px) {
     .bento-grid {
       grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: repeat(14, 220px);
+      grid-template-rows: repeat(4, 220px) auto 220px repeat(5, minmax(220px, auto)) repeat(4, 220px);
       grid-template-areas:
         'hero hero hero hero hero hero hero hero metric-a metric-a metric-b metric-b'
         'hero hero hero hero hero hero hero hero location location location location'
         'technology technology technology technology technology technology facility-1 facility-1 facility-1 facility-2 facility-2 facility-2'
         'technology technology technology technology technology technology facility-3 facility-3 facility-3 facility-4 facility-4 facility-4'
+        'invest-header invest-header invest-header invest-header invest-header invest-header invest-header invest-header invest-header invest-header invest-header invest-header'
         'invest-yield invest-yield invest-yield invest-appreciation invest-appreciation invest-appreciation invest-payment invest-payment invest-payment invest-payment invest-turnkey invest-turnkey'
-        'floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans'
-        'floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans'
+        'unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types'
+        'unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types'
         'gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery'
         'gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery'
         'gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery'
@@ -389,16 +395,6 @@
       animation: none;
       opacity: 0;
     }
-  }
-
-  /* Hides the native scrollbar on the FloorPlans carousel track while keeping it scrollable by drag/touch/keyboard. */
-  .scrollbar-hidden {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
-  .scrollbar-hidden::-webkit-scrollbar {
-    display: none;
   }
 }
 

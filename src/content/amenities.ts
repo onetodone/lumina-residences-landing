@@ -23,7 +23,7 @@ export const facilitiesAmenities: FeatureItem[] = [
   },
   {
     id: 'cafe',
-    name: 'Artisan Café',
+    name: 'Artisan Cafe',
     description:
       'A ground-floor specialty coffee bar exclusive to residents and their guests, serving organic blends and daily fresh pastries.',
     icon: 'Coffee',

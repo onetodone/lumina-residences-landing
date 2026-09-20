@@ -8,7 +8,7 @@ Next.js build, not to market a real property.
 
 Built as a single-page "bento grid" layout: a hero, a set of interactive
 cells (availability filter, smart-home mock, wellness amenities, location
-map, and more), a floor-plan carousel, an image gallery with a lightbox, and
+map, and more), a Unit Types showcase, an image gallery with a lightbox, and
 a tour-request form — all client-side, with no backend.
 
 ## Stack
@@ -61,8 +61,8 @@ src/
   components/
     bento/      # BentoGrid, BentoCard, ExpandableCard primitives
     cells/      # the 9 bento-grid cells (Hero, Stats, Residences, ...)
-    sections/   # Header, FloorPlans, Gallery, TourForm, Footer
-    floor-plans/# inline-SVG apartment floor plans
+    sections/   # Header, TourForm, Footer
+    shared/     # SectionHeader (reusable eyebrow/title/description, no card background)
     motion/     # Reveal, Counter, MagneticButton, KineticText
     media/      # MediaSlot (image-or-gradient+noise fallback)
     ui/         # shadcn/ui primitives

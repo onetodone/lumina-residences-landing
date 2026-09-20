@@ -5,9 +5,9 @@ import { Fancybox } from '@fancyapps/ui/dist/fancybox/fancybox.js'
 import '@fancyapps/ui/dist/fancybox/fancybox.css'
 import { BentoCard } from '@/components/bento/BentoCard'
 import { MediaSlot } from '@/components/media/MediaSlot'
+import { SectionHeader } from '@/components/shared/SectionHeader'
 import { galleryImages, type GallerySpan } from '@/content/gallery'
 import { cn } from '@/lib/utils'
-import { eyebrowClassName } from './cell-styles'
 
 // Scoped with `max-md:` so these don't fight the explicit `grid-area` placement below 768px — see `.gallery-grid` in globals.css.
 const spanClassName: Record<GallerySpan, string> = {
@@ -28,7 +28,7 @@ const areaClassName: Record<string, string> = {
   studio: 'md:[grid-area:studio]',
 }
 
-/** Gallery cell: masonry grid of resident/amenity photos, opening in a Fancybox lightbox (toolbar: counter left, zoom/fullscreen/close right). Placed after Floor Plans. */
+/** Gallery cell: masonry grid of resident/amenity photos, opening in a Fancybox lightbox (toolbar: counter left, zoom/fullscreen/close right). Placed after Unit Types. */
 export function GalleryCell() {
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -54,32 +54,33 @@ export function GalleryCell() {
   }, [])
 
   return (
-    <BentoCard id="gallery" className="flex h-full flex-col p-6 md:p-8">
-      <h2 className={eyebrowClassName}>Gallery</h2>
-      <h3 className="text-foreground mt-2 font-serif text-xl md:text-2xl">A Closer Look</h3>
+    <div id="gallery" className="flex flex-col gap-5">
+      <SectionHeader eyebrow="Gallery" title="A Closer Look" />
 
-      <div ref={containerRef} className="gallery-grid mt-6">
-        {galleryImages.map((image) => (
-          <a
-            key={image.id}
-            href={image.media.src ?? undefined}
-            data-fancybox="residence-gallery"
-            data-caption={image.media.alt}
-            aria-label={image.media.alt}
-            className={cn(
-              'border-border rounded-control focus-visible:ring-ring/50 group relative block overflow-hidden border outline-none focus-visible:ring-3',
-              spanClassName[image.span],
-              areaClassName[image.id],
-            )}
-          >
-            <MediaSlot
-              slot={image.media}
-              className="motion-safe:transition-transform motion-safe:duration-(--duration-slow) motion-safe:group-hover:scale-105"
-              sizes="(min-width: 768px) 25vw, 50vw"
-            />
-          </a>
-        ))}
-      </div>
-    </BentoCard>
+      <BentoCard className="p-6 md:p-8">
+        <div ref={containerRef} className="gallery-grid">
+          {galleryImages.map((image) => (
+            <a
+              key={image.id}
+              href={image.media.src ?? undefined}
+              data-fancybox="residence-gallery"
+              data-caption={image.media.alt}
+              aria-label={image.media.alt}
+              className={cn(
+                'border-border rounded-control focus-visible:ring-ring/50 group relative block overflow-hidden border outline-none focus-visible:ring-3',
+                spanClassName[image.span],
+                areaClassName[image.id],
+              )}
+            >
+              <MediaSlot
+                slot={image.media}
+                className="motion-safe:transition-transform motion-safe:duration-(--duration-slow) motion-safe:group-hover:scale-105"
+                sizes="(min-width: 768px) 25vw, 50vw"
+              />
+            </a>
+          ))}
+        </div>
+      </BentoCard>
+    </div>
   )
 }

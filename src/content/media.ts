@@ -48,7 +48,7 @@ export const media = {
     1536,
     '/media/lumina-room-04.jpg',
   ),
-  gallery06: slot('Artisan Café, the ground-floor specialty coffee bar', 2752, 1536, '/media/lumina-cafe.jpg'),
+  gallery06: slot('Artisan Cafe, the ground-floor specialty coffee bar', 2752, 1536, '/media/lumina-cafe.jpg'),
   gallery07: slot('Lumina Lounge & Co-Work resident workspace', 2752, 1536, '/media/lumina-coworking.jpg'),
   gallery08: slot('The Sanctuary Spa thermal suite', 2752, 1536, '/media/lumina-spa.jpg'),
   gallery09: slot(

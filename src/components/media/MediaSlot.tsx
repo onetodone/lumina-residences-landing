@@ -26,6 +26,7 @@ export function MediaSlot({ slot, className, kenBurns, priority, sizes = '100vw'
           fill
           sizes={sizes}
           priority={priority}
+          draggable={false}
           className={cn('object-cover', kenBurns && 'ken-burns')}
         />
       ) : (
