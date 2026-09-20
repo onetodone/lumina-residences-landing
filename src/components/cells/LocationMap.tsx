@@ -15,7 +15,7 @@ import {
 } from '@/config/mapLocations'
 import { cn } from '@/lib/utils'
 
-const MAPBOX_TOKEN = process.env.MAPBOX_PUBLIC_TOKEN ?? ''
+const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN ?? ''
 
 /** POI marker dot color per category — edit these to restyle without touching the map logic. */
 const poiMarkerClassName: Record<PointOfInterestCategory, string> = {
@@ -165,7 +165,7 @@ export function LocationMap() {
           <div ref={interactiveContainerRef} className="lumina-map h-full w-full" />
         ) : (
           <div className="text-muted-foreground bg-graphite flex h-full w-full items-center justify-center p-6 text-center text-sm">
-            Map unavailable — set MAPBOX_PUBLIC_TOKEN to enable it.
+            Map unavailable — set NEXT_PUBLIC_MAPBOX_TOKEN to enable it.
           </div>
         )}
       </div>
