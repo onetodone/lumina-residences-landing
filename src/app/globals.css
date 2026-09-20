@@ -401,3 +401,51 @@
     display: none;
   }
 }
+
+/*
+ * Dark-theme overrides for the Mapbox GL controls/popups inside the Location cell's interactive
+ * map (mapbox-gl.css ships a light-only theme). Deliberately kept OUTSIDE `@layer utilities`:
+ * Tailwind v4 puts its own utilities in named cascade layers, and unlayered CSS (mapbox-gl.css's
+ * own rules, imported directly with no `@layer`) always wins over layered CSS regardless of
+ * specificity — so a layered override here would be silently ignored no matter how specific it is.
+ */
+.lumina-map .mapboxgl-ctrl-group {
+  background: var(--graphite);
+  box-shadow: 0 0 0 1px var(--border);
+}
+
+.lumina-map .mapboxgl-ctrl-group button + button {
+  border-top: 1px solid var(--border);
+}
+
+.lumina-map .mapboxgl-ctrl-icon {
+  filter: invert(1) brightness(1.7);
+}
+
+.lumina-map .mapboxgl-ctrl-attrib {
+  background: transparent;
+  color: var(--muted-foreground);
+}
+
+.lumina-map .mapboxgl-ctrl-attrib a {
+  color: var(--muted-foreground);
+}
+
+.lumina-popup .mapboxgl-popup-content {
+  border-radius: var(--radius-control);
+  background: var(--graphite);
+  box-shadow: var(--shadow-card);
+  padding: 0.5rem 0.75rem;
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+}
+
+.lumina-popup .mapboxgl-popup-tip {
+  border-top-color: var(--graphite) !important;
+  border-bottom-color: var(--graphite) !important;
+}
+
+.lumina-popup .mapboxgl-popup-close-button {
+  color: var(--muted-foreground);
+}
