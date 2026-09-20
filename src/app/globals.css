@@ -194,13 +194,12 @@
   @media (min-width: 1280px) {
     .bento-grid {
       grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: repeat(12, 220px);
+      grid-template-rows: repeat(11, 220px);
       grid-template-areas:
         'hero hero hero hero hero hero hero hero metric-a metric-a metric-b metric-b'
         'hero hero hero hero hero hero hero hero location location location location'
         'technology technology technology technology technology technology facility-1 facility-1 facility-1 facility-2 facility-2 facility-2'
         'technology technology technology technology technology technology facility-3 facility-3 facility-3 facility-4 facility-4 facility-4'
-        'invest-yield invest-yield invest-yield invest-appreciation invest-appreciation invest-appreciation invest-payment invest-payment invest-payment invest-payment invest-turnkey invest-turnkey'
         'invest-yield invest-yield invest-yield invest-appreciation invest-appreciation invest-appreciation invest-payment invest-payment invest-payment invest-payment invest-turnkey invest-turnkey'
         'floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans'
         'floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans floor-plans'
