@@ -9,13 +9,6 @@ export const technologyIntro = {
 
 export const technologyHighlights: FeatureItem[] = [
   {
-    id: 'smart-home',
-    name: 'Integrated Smart Home',
-    description:
-      'Control lighting, climate, automated blinds, and biometric security through a single, intuitive proprietary app.',
-    icon: 'Smartphone',
-  },
-  {
     id: 'sustainable',
     name: 'Sustainable Architecture',
     description:
@@ -28,5 +21,12 @@ export const technologyHighlights: FeatureItem[] = [
     description:
       'Underfloor heating, concealed HVAC systems, and built-in circadian lighting ensure zero visual clutter.',
     icon: 'EyeOff',
+  },
+  {
+    id: 'smart-home',
+    name: 'Integrated Smart Home',
+    description:
+      'Control lighting, climate, automated blinds, and biometric security through a single, intuitive proprietary app.',
+    icon: 'Smartphone',
   },
 ]

@@ -1,14 +1,10 @@
 import { Fingerprint, Lightbulb, Thermometer, type LucideIcon } from 'lucide-react'
 import { BentoCard } from '@/components/bento/BentoCard'
-import { Counter } from '@/components/motion/Counter'
 import { Reveal } from '@/components/motion/Reveal'
-import { keyFigures } from '@/content/stats'
 import { technologyHighlights, technologyIntro } from '@/content/technology'
 import { eyebrowClassName, featureIcons } from './cell-styles'
 
-const ecosystemFigure = keyFigures.find((figure) => figure.id === 'ecosystem')!
-// The "Integrated Smart Home" bullet is folded into the big ecosystem stat above, so it's dropped from the list.
-const bullets = technologyHighlights.filter((item) => item.id !== 'smart-home')
+const bullets = technologyHighlights
 
 const appPanelRows: { label: string; icon: LucideIcon }[] = [
   { label: 'Lighting', icon: Lightbulb },
@@ -47,18 +43,6 @@ export function TechnologyCell() {
           <h3 className="text-foreground mt-2 font-serif text-xl md:text-2xl">{technologyIntro.heading}</h3>
           <p className="text-muted-foreground mt-2 text-sm">{technologyIntro.description}</p>
         </div>
-
-        <div className="flex items-baseline gap-3">
-          <p className="text-foreground font-serif text-4xl md:text-5xl">
-            <Counter
-              value={ecosystemFigure.value}
-              decimals={ecosystemFigure.decimals}
-              suffix={ecosystemFigure.suffix}
-            />
-          </p>
-          <p className="text-muted-foreground text-xs tracking-wide uppercase">{ecosystemFigure.label}</p>
-        </div>
-
         <ul className="flex flex-col gap-4">
           {bullets.map((item, index) => {
             const Icon = featureIcons[item.icon]
