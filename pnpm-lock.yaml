@@ -187,6 +187,9 @@ importers:
       lucide-react:
         specifier: ^1.46.0
         version: 1.46.0(react@19.3.0)
+      mapbox-gl:
+        specifier: ^3.31.0
+        version: 3.31.0
       motion:
         specifier: ^13.4.0
         version: 13.4.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -2444,6 +2447,9 @@ packages:
 
   magic-string@0.30.21:
     resolution: {integrity: sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==}
+
+  mapbox-gl@3.31.0:
+    resolution: {integrity: sha512-7i25NyCPW5jnqsqJq3irgBBEoVTJgfZqTJJS446Q3ZuxyAb5Om75UIcxYIo38oz9eDswnBXr0riz+M/C8V7g3Q==}
 
   math-intrinsics@1.1.0:
     resolution: {integrity: sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==}
@@ -5531,6 +5537,8 @@ snapshots:
   magic-string@0.30.21:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.6.0
+
+  mapbox-gl@3.31.0: {}
 
   math-intrinsics@1.1.0: {}
 
