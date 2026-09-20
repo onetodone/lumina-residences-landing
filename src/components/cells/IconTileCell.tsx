@@ -13,11 +13,7 @@ export function IconTileCell({ id, item }: IconTileCellProps) {
 
   return (
     <BentoCard id={id} className="flex h-full flex-col justify-center gap-3 p-5 md:p-6">
-      {Icon && (
-        <span className="bg-gold-soft text-gold inline-flex size-10 items-center justify-center rounded-full">
-          <Icon aria-hidden className="size-5" />
-        </span>
-      )}
+      {Icon && <Icon aria-hidden className="text-gold size-5" />}
       <div>
         <p className="text-foreground font-serif text-lg">{item.name}</p>
         <p className="text-muted-foreground mt-1 text-xs">{item.description}</p>

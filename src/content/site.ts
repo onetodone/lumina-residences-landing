@@ -14,6 +14,7 @@ export const navLinks = [
   { label: 'Investment', href: '#investment' },
   { label: 'Facilities', href: '#facilities' },
   { label: 'Floor Plans', href: '#floor-plans' },
+  { label: 'Gallery', href: '#gallery' },
   { label: 'Location', href: '#location' },
   { label: 'Contact', href: '#tour' },
 ] as const
