@@ -5,3 +5,10 @@ export type FeatureItem = {
   description: string
   icon: string
 }
+
+/** Looks up a content item by `id` — throws if the id doesn't exist, since every call site names a known, fixed id. */
+export function findById<T extends { id: string }>(items: readonly T[], id: string): T {
+  const item = items.find((entry) => entry.id === id)
+  if (!item) throw new Error(`Item not found: ${id}`)
+  return item
+}

@@ -13,7 +13,7 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 
-/** Shared eyebrow label style — small uppercase gold caption used at the top of every bento cell. */
+/** Shared eyebrow label style — small uppercase gold caption used at the top of bento cells and section headers. */
 export const eyebrowClassName = 'text-gold text-xs tracking-[0.2em] uppercase'
 
 /** Maps `FeatureItem.icon` string values (content/amenities.ts, content/investment.ts, content/technology.ts) to their lucide-react component. */

@@ -1,12 +1,11 @@
 import Image from 'next/image'
 import type { MediaSlot as MediaSlotData } from '@/content/media'
 import { cn } from '@/lib/utils'
+import { GradientNoiseBackground } from './GradientNoiseBackground'
 
 type MediaSlotProps = {
   slot: MediaSlotData
   className?: string
-  /** Slow scale animation (transform only, disabled under reduced motion) — for ambient background imagery. */
-  kenBurns?: boolean
   priority?: boolean
   sizes?: string
 }
@@ -16,7 +15,7 @@ type MediaSlotProps = {
  * gradient + noise fallback — every media slot must degrade gracefully
  * rather than showing a broken image (SPEC.md section 6).
  */
-export function MediaSlot({ slot, className, kenBurns, priority, sizes = '100vw' }: MediaSlotProps) {
+export function MediaSlot({ slot, className, priority, sizes = '100vw' }: MediaSlotProps) {
   return (
     <div className={cn('relative h-full w-full overflow-hidden', className)}>
       {slot.src ? (
@@ -27,14 +26,10 @@ export function MediaSlot({ slot, className, kenBurns, priority, sizes = '100vw'
           sizes={sizes}
           priority={priority}
           draggable={false}
-          className={cn('object-cover', kenBurns && 'ken-burns')}
+          className="object-cover"
         />
       ) : (
-        <div aria-hidden className={cn('absolute inset-0', kenBurns && 'ken-burns')}>
-          <div className="from-graphite via-obsidian to-graphite absolute inset-0 bg-gradient-to-br" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,var(--gold-soft),transparent_60%)]" />
-          <div className="noise-overlay absolute inset-0 opacity-[0.15] mix-blend-overlay" />
-        </div>
+        <GradientNoiseBackground />
       )}
     </div>
   )

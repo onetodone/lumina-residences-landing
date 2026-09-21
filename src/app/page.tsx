@@ -14,12 +14,13 @@ import { SectionHeader } from '@/components/shared/SectionHeader'
 import { TourForm } from '@/components/sections/TourForm'
 import { facilitiesAmenities } from '@/content/amenities'
 import { investmentHighlights, investmentIntro } from '@/content/investment'
+import { findById } from '@/content/types'
 
-const facilitySpa = facilitiesAmenities.find((item) => item.id === 'spa')!
-const facilityPerformance = facilitiesAmenities.find((item) => item.id === 'performance-studio')!
-const facilityLounge = facilitiesAmenities.find((item) => item.id === 'lounge')!
-const facilityCafe = facilitiesAmenities.find((item) => item.id === 'cafe')!
-const turnkeyItem = investmentHighlights.find((item) => item.id === 'management')!
+const facilitySpa = findById(facilitiesAmenities, 'spa')
+const facilityPerformance = findById(facilitiesAmenities, 'performance-studio')
+const facilityLounge = findById(facilitiesAmenities, 'lounge')
+const facilityCafe = findById(facilitiesAmenities, 'cafe')
+const turnkeyItem = findById(investmentHighlights, 'management')
 
 export default function Home() {
   return (

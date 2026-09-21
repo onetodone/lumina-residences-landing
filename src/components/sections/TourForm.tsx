@@ -9,11 +9,10 @@ import { z } from 'zod'
 import { BentoCard } from '@/components/bento/BentoCard'
 import { eyebrowClassName } from '@/components/cells/cell-styles'
 import { Button } from '@/components/ui/button'
+import { unitCategories, type UnitCategory } from '@/content/unit-types'
 import { duration, easeLuxury } from '@/lib/motion'
 
-type ResidenceTypeOption = 'studio' | '1-bed' | '2-bed'
-
-const TYPE_LABEL: Record<ResidenceTypeOption, string> = {
+const TYPE_LABEL: Record<UnitCategory, string> = {
   studio: 'Studio',
   '1-bed': '1 Bedroom',
   '2-bed': '2 Bedroom',
@@ -24,7 +23,7 @@ const tourRequestSchema = z.object({
   email: z.string().trim().email('Enter a valid email address'),
   phone: z.string().trim().min(7, 'Enter a valid phone number'),
   preferredDate: z.string().min(1, 'Select a preferred date'),
-  residenceType: z.enum(['studio', '1-bed', '2-bed']),
+  residenceType: z.enum(unitCategories),
   message: z.string().trim().max(500, 'Keep your message under 500 characters').optional(),
 })
 
@@ -170,7 +169,7 @@ export function TourForm() {
             <label className="flex flex-col gap-1.5">
               <span className={labelClassName}>Residence type</span>
               <select {...register('residenceType')} className={fieldClassName}>
-                {(Object.keys(TYPE_LABEL) as ResidenceTypeOption[]).map((type) => (
+                {unitCategories.map((type) => (
                   <option key={type} value={type}>
                     {TYPE_LABEL[type]}
                   </option>

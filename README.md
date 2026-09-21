@@ -1,15 +1,15 @@
 # Lumina Residences
 
-A portfolio marketing site for **Lumina Residences**, a fictional waterfront
-development in the Harbor Quarter of Aveline — two towers, 214 residences,
-designed around light and water. The development, its developer, and every
-person referenced are invented; this project exists to demonstrate a modern
-Next.js build, not to market a real property.
+A portfolio marketing site for **Lumina Residences**, a fictional boutique
+development in the Harbor Quarter of Aveline — 48 exclusive residences,
+designed around light and intelligent living. The development, its
+developer, and every person referenced are invented; this project exists to
+demonstrate a modern Next.js build, not to market a real property.
 
 Built as a single-page "bento grid" layout: a hero, a set of interactive
-cells (availability filter, smart-home mock, wellness amenities, location
-map, and more), a Unit Types showcase, an image gallery with a lightbox, and
-a tour-request form — all client-side, with no backend.
+cells (smart-home mock, wellness facilities, an interactive location map,
+investment stats, and more), a Unit Types showcase, an image gallery with a
+lightbox, and a tour-request form — all client-side, with no backend.
 
 ## Stack
 
@@ -19,7 +19,8 @@ a tour-request form — all client-side, with no backend.
 - [Motion](https://motion.dev) (`motion/react`) for animation
 - [lucide-react](https://lucide.dev) for icons
 - `zod` + `react-hook-form` for the tour-request form
-- [Vitest](https://vitest.dev) for unit tests
+- [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js/) for the Location cell's map
+- [@fancyapps/ui](https://fancyapps.com/fancybox/) (Fancybox) for the gallery lightbox
 
 ## Getting started
 
@@ -41,7 +42,6 @@ Open [http://localhost:3000](http://localhost:3000).
 | `pnpm lint`      | Lint with ESLint (auto-fix)               |
 | `pnpm lint:ci`   | Lint with ESLint (check only, no fixes)   |
 | `pnpm typecheck` | Generate route types, then `tsc --noEmit` |
-| `pnpm test`      | Run the Vitest unit test suite            |
 
 Before shipping a change, run `pnpm format && pnpm lint && pnpm build` and
 make sure all three are clean.
@@ -59,31 +59,30 @@ informational build warning.
 src/
   app/          # layout, page, global styles, favicon, OG image
   components/
-    bento/      # BentoGrid, BentoCard, ExpandableCard primitives
-    cells/      # the 9 bento-grid cells (Hero, Stats, Residences, ...)
+    bento/      # BentoGrid, BentoCard
+    cells/      # the bento-grid cells (Hero, Location, Technology, Facilities, Investment, Unit Types, Gallery, Developer, ...)
     sections/   # Header, TourForm, Footer
     shared/     # SectionHeader (reusable eyebrow/title/description, no card background)
     motion/     # Reveal, Counter, MagneticButton, KineticText
     media/      # MediaSlot (image-or-gradient+noise fallback)
+    noise/      # NoiseOverlay
     ui/         # shadcn/ui primitives
-  content/      # typed copy: site info, stats, amenities, location, media manifest
-  data/         # domain types, seeded mock dataset, repository, filters
+  config/       # Mapbox location/POI data for the Location cell's map
+  content/      # typed copy: site info, stats, amenities, investment, technology, unit types, gallery, media manifest
   lib/          # utils, fonts, motion constants, hooks
-tests/          # Vitest unit tests for the data layer
 ```
 
-Data is only ever accessed through `ResidenceRepository`
-(`src/data/repository.ts`), backed today by a seeded mock dataset of 60
-residences (`src/data/mock-residences.ts`) — swapping in a real API later
-means writing a new repository implementation, not touching any component.
+All copy and structured data live in typed modules under `src/content/` —
+components import directly from these, with no data-access layer in between.
 
 ## Media assets
 
-No binary media ships in this repo. Every image/video slot is declared in
-`src/content/media.ts` with `src: null`, and renders an elegant gradient +
-noise fallback until a real asset is dropped in — no slot ever shows a broken
-image. See [`docs/media.md`](docs/media.md) for the full list of slots, their
-recommended file names/sizes, and an AI-render prompt for each.
+Most media ships as real files under `public/media/` — the hero poster and
+video, and all 9 gallery photos. Every slot is declared in
+`src/content/media.ts`; a slot with `src: null` renders an elegant gradient +
+noise fallback instead of a broken image until a real asset is dropped in.
+See [`docs/media.md`](docs/media.md) for the one remaining placeholder slot,
+its recommended file name/size, and an AI-render prompt.
 
 ## Accessibility & performance
 
@@ -100,17 +99,10 @@ reducedMotion="user">`).
 
 ## Testing
 
-Unit tests cover the data layer — the residence filter, the URL
-filter-state codec, the seeded generator's invariants, and the mock
-repository:
-
-```bash
-pnpm test
-```
-
-UI behavior (keyboard navigation, reduced motion, responsive layout,
-dialog focus management) is verified manually in a real browser rather than
-with component/e2e tests, which are out of scope for this portfolio project.
+This project has no automated test suite. UI behavior (keyboard navigation,
+reduced motion, responsive layout, dialog focus management) is verified
+manually in a real browser instead, which is in scope for a portfolio
+project of this size.
 
 ## License
 

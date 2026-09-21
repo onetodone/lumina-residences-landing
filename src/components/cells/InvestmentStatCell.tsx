@@ -1,5 +1,6 @@
 import { BentoCard } from '@/components/bento/BentoCard'
 import { investmentHighlights } from '@/content/investment'
+import { findById } from '@/content/types'
 import { eyebrowClassName, featureIcons } from './cell-styles'
 
 type InvestmentStatCardProps = {
@@ -41,8 +42,8 @@ function InvestmentStatCard({ icon, figure, label, description }: InvestmentStat
   )
 }
 
-const yieldItem = investmentHighlights.find((item) => item.id === 'yield')!
-const appreciationItem = investmentHighlights.find((item) => item.id === 'appreciation')!
+const yieldItem = findById(investmentHighlights, 'yield')
+const appreciationItem = findById(investmentHighlights, 'appreciation')
 
 export function YieldStatCell() {
   return (

@@ -1,8 +1,9 @@
 import { BentoCard } from '@/components/bento/BentoCard'
 import { investmentHighlights } from '@/content/investment'
+import { findById } from '@/content/types'
 import { eyebrowClassName, featureIcons } from './cell-styles'
 
-const paymentItem = investmentHighlights.find((item) => item.id === 'payment-plan')!
+const paymentItem = findById(investmentHighlights, 'payment-plan')
 
 export function PaymentPlanCell() {
   const Icon = featureIcons[paymentItem.icon]

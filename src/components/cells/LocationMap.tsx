@@ -6,6 +6,7 @@ import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { X } from 'lucide-react'
 import { animate, motion, useMotionValue, useReducedMotion } from 'motion/react'
+import { GradientNoiseBackground } from '@/components/media/GradientNoiseBackground'
 import {
   MAPBOX_INTERACTIVE_ZOOM,
   MAPBOX_PREVIEW_ZOOM,
@@ -229,11 +230,7 @@ export function LocationMap() {
 
   return (
     <>
-      <div aria-hidden className="absolute inset-0">
-        <div className="from-graphite via-obsidian to-graphite absolute inset-0 bg-gradient-to-br" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,var(--gold-soft),transparent_60%)]" />
-        <div className="noise-overlay absolute inset-0 opacity-[0.15] mix-blend-overlay" />
-      </div>
+      <GradientNoiseBackground />
       {MAPBOX_TOKEN && (
         <div
           ref={previewContainerRef}

@@ -4,12 +4,8 @@ import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 import { cn } from '@/lib/utils'
 import { usePointerGlow } from '@/lib/hooks/usePointerGlow'
 
-/** Static glass surface, no interaction — used by ExpandableCard's expanded panel. */
-export const bentoSurfaceClassName = 'bento-surface backdrop-blur-xl shadow-card'
-
-/** Surface + pointer-glow/hover-lift — used by BentoCard and ExpandableCard's compact trigger. */
-export const bentoCardClassName = cn(
-  bentoSurfaceClassName,
+const bentoCardClassName = cn(
+  'bento-surface backdrop-blur-xl shadow-card',
   'bento-interactive h-full w-full overflow-hidden rounded-card',
 )
 

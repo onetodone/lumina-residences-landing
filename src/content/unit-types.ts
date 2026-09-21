@@ -1,6 +1,8 @@
 import { media } from './media'
 
-export type UnitCategory = 'studio' | '1-bed' | '2-bed'
+export const unitCategories = ['studio', '1-bed', '2-bed'] as const
+
+export type UnitCategory = (typeof unitCategories)[number]
 
 export type UnitType = {
   type: UnitCategory

@@ -4,8 +4,6 @@ import { Reveal } from '@/components/motion/Reveal'
 import { technologyHighlights, technologyIntro } from '@/content/technology'
 import { eyebrowClassName, featureIcons } from './cell-styles'
 
-const bullets = technologyHighlights
-
 const appPanelRows: { label: string; icon: LucideIcon }[] = [
   { label: 'Lighting', icon: Lightbulb },
   { label: 'Climate', icon: Thermometer },
@@ -44,7 +42,7 @@ export function TechnologyCell() {
           <p className="text-muted-foreground mt-2 text-sm">{technologyIntro.description}</p>
         </div>
         <ul className="flex flex-col gap-4">
-          {bullets.map((item, index) => {
+          {technologyHighlights.map((item, index) => {
             const Icon = featureIcons[item.icon]
             return (
               <li key={item.id}>
