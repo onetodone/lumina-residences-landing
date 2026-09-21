@@ -3,7 +3,7 @@
  * nearby points of interest shown on the interactive map.
  */
 
-export type PointOfInterestCategory = 'restaurant' | 'beach' | 'shopping'
+export type PointOfInterestCategory = 'restaurant' | 'beach' | 'shopping' | 'entertainment'
 
 export type PointOfInterest = {
   id: string
@@ -27,28 +27,46 @@ export const siteLocation: SiteLocation = {
 
 export const pointsOfInterest: PointOfInterest[] = [
   {
-    id: 'restaurant-amber-grove',
-    name: 'The Amber Grove',
-    category: 'restaurant',
-    coordinates: [98.2825, 7.9438],
-  },
-  {
-    id: 'restaurant-salt-and-lime',
-    name: 'Salt & Lime Kitchen',
-    category: 'restaurant',
-    coordinates: [98.2779, 7.9491],
-  },
-  {
-    id: 'beach-sirocco',
-    name: 'Sirocco Beach',
+    id: 'kamala-beach',
+    name: 'Kamala Beach',
     category: 'beach',
-    coordinates: [98.269, 7.948],
+    coordinates: [98.2832699504579, 7.958101022647142],
   },
   {
-    id: 'mall-bluewater-galleria',
-    name: 'Bluewater Galleria',
+    id: 'surin-beach',
+    name: 'Surin Beach',
+    category: 'beach',
+    coordinates: [98.2783547442865, 7.9757794831630235],
+  },
+  {
+    id: 'villa-market',
+    name: 'Villa Market',
     category: 'shopping',
-    coordinates: [98.284, 7.951],
+    coordinates: [98.27931457007026, 7.946690359644549],
+  },
+  {
+    id: 'tops-market',
+    name: 'Tops Market',
+    category: 'shopping',
+    coordinates: [98.27975706115899, 7.946654849500348],
+  },
+  {
+    id: 'junge-ceylon',
+    name: 'JungeCeylon',
+    category: 'shopping',
+    coordinates: [98.29987102032442, 7.89038884905537],
+  },
+  {
+    id: 'oasis-spa',
+    name: 'Oasis SPA',
+    category: 'entertainment',
+    coordinates: [98.28915093725118, 7.953577729786943],
+  },
+  {
+    id: 'phuket-fantasy',
+    name: 'Phuket Fantasy',
+    category: 'entertainment',
+    coordinates: [98.28623801001925, 7.956650941361659],
   },
 ]
 

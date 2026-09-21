@@ -36,14 +36,15 @@ const poiMarkerClassName: Record<PointOfInterestCategory, string> = {
   restaurant: 'bg-amber-400',
   beach: 'bg-sky-400',
   shopping: 'bg-violet-400',
+  entertainment: 'bg-green-400',
 }
 
 function createSiteMarkerElement() {
   const el = document.createElement('div')
-  el.className = 'relative flex h-4 w-4 items-center justify-center'
+  el.className = 'relative flex h-6 w-6 items-center justify-center'
   el.innerHTML =
     '<span class="map-marker-ping absolute inset-0 rounded-full bg-gold/60"></span>' +
-    '<span class="relative h-2.5 w-2.5 rounded-full bg-gold ring-2 ring-obsidian"></span>'
+    '<img src="/media/map-marker.svg" alt="" class="shadow-card relative h-24 w-24 rounded-lg" />'
   return el
 }
 
