@@ -1,13 +1,12 @@
 import Link from 'next/link'
-import { Briefcase, Camera, Users } from 'lucide-react'
+import { FacebookIcon, InstagramIcon, LinkedinIcon } from '@/components/shared/SocialIcons'
 import { navLinks, siteConfig } from '@/content/site'
 
-// lucide-react no longer ships brand/logo icons (trademark reasons), so these use brand-neutral
-// glyphs instead — fitting anyway, since no real social accounts exist behind this fictional project.
+// Decorative only — there are no real social accounts behind this fictional project.
 const socialLinks = [
-  { label: 'Instagram', icon: Camera },
-  { label: 'Facebook', icon: Users },
-  { label: 'LinkedIn', icon: Briefcase },
+  { label: 'Instagram', icon: InstagramIcon, url: 'https://www.instagram.com/swipeek' },
+  { label: 'LinkedIn', icon: LinkedinIcon, url: 'https://www.linkedin.com/in/anton-holubeu/' },
+  { label: 'Facebook', icon: FacebookIcon, url: 'https://www.facebook.com/profile.php?id=61593807187808' },
 ]
 
 /** Footer: developer info, fictional address, social icons, and the portfolio disclaimer (SPEC.md section 4F). Social icons are decorative — there are no real accounts behind this fictional project. */
@@ -20,7 +19,6 @@ export function Footer() {
             <p className="text-foreground font-serif text-2xl">{siteConfig.name}</p>
             <p className="text-muted-foreground mt-2 text-sm font-medium">{siteConfig.developer}</p>
             <p className="text-muted-foreground mt-2 text-sm">{siteConfig.developerBlurb}</p>
-            <p className="text-muted-foreground mt-3 text-sm">1 Harbor Quarter Promenade, Aveline</p>
           </div>
 
           <nav aria-label="Footer" className="flex flex-col gap-2 text-sm">
@@ -35,16 +33,18 @@ export function Footer() {
             ))}
           </nav>
 
-          <div className="flex gap-3">
+          <div className="ms-auto flex gap-3">
             {socialLinks.map((social) => (
-              <span
+              <a
+                href={social.url}
                 key={social.label}
                 aria-hidden
                 title={social.label}
+                target="_blank"
                 className="border-border text-muted-foreground inline-flex size-10 items-center justify-center rounded-full border"
               >
                 <social.icon aria-hidden className="size-4" />
-              </span>
+              </a>
             ))}
           </div>
         </div>
