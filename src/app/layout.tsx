@@ -5,6 +5,7 @@ import { Header } from '@/components/sections/Header'
 import { NoiseOverlay } from '@/components/noise/NoiseOverlay'
 import { siteConfig } from '@/content/site'
 import { sans, serif } from '@/lib/fonts'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import './globals.css'
 
 const title = `${siteConfig.name} — ${siteConfig.tagline}`
@@ -28,6 +29,8 @@ export const metadata: Metadata = {
   },
 }
 
+const gaTagId = process.env.NEXT_PUBLIC_GATAG_ID ?? ''
+
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable}`}>
@@ -45,6 +48,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
           <Footer />
         </MotionConfig>
       </body>
+      {gaTagId && <GoogleAnalytics gaId={gaTagId} />}
     </html>
   )
 }
