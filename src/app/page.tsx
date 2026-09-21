@@ -56,6 +56,11 @@ export default function Home() {
           <IconTileCell item={facilityCafe} />
         </Reveal>
 
+        {/* Gallery */}
+        <Reveal className="[grid-area:gallery]">
+          <GalleryCell />
+        </Reveal>
+
         {/* Data Grid */}
         <Reveal className="[grid-area:invest-header]">
           <SectionHeader
@@ -81,11 +86,6 @@ export default function Home() {
         {/* Layout Grid */}
         <Reveal className="[grid-area:unit-types]">
           <UnitTypesCell />
-        </Reveal>
-
-        {/* Gallery */}
-        <Reveal className="[grid-area:gallery]">
-          <GalleryCell />
         </Reveal>
 
         {/* Closing Grid */}

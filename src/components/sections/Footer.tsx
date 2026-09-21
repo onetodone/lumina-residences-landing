@@ -1,6 +1,9 @@
+'use client'
+
 import Link from 'next/link'
 import { FacebookIcon, InstagramIcon, LinkedinIcon } from '@/components/shared/SocialIcons'
 import { navLinks, siteConfig } from '@/content/site'
+import { scrollToHash } from '@/lib/scrollToHash'
 
 // Decorative only — there are no real social accounts behind this fictional project.
 const socialLinks = [
@@ -26,6 +29,10 @@ export function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
+                onClick={(event) => {
+                  event.preventDefault()
+                  scrollToHash(link.href)
+                }}
                 className="text-muted-foreground hover:text-foreground transition-colors duration-(--duration-fast)"
               >
                 {link.label}
