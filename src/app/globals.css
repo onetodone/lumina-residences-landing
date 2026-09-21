@@ -62,6 +62,12 @@
   --status-reserved: #c9a96e;
   --status-sold: #8a8680;
 
+  /* Smart-home widget ambient tints (SmartHomeWidget.tsx page-wide climate/lighting overlays) */
+  --frost-tint: rgb(120 190 255 / 0.55);
+  --ember-tint: rgb(255 132 64 / 0.5);
+  --warm-lamp-tint: rgb(255 178 92 / 0.4);
+  --warm-lamp-tint-deep: rgb(120 62 12 / 0.6);
+
   --background: var(--obsidian);
   --foreground: #f5f3ef;
   --card: var(--graphite);
@@ -376,6 +382,105 @@
     .map-marker-ping {
       animation: none;
       opacity: 0;
+    }
+  }
+
+  .smart-home-slider {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--graphite);
+    cursor: pointer;
+  }
+
+  .smart-home-slider::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 999px;
+    background: transparent;
+  }
+
+  .smart-home-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -5px;
+    width: 14px;
+    height: 14px;
+    border-radius: 999px;
+    background: var(--gold);
+    border: 2px solid var(--obsidian);
+    box-shadow: var(--shadow-card);
+  }
+
+  .smart-home-slider::-moz-range-track {
+    height: 4px;
+    border-radius: 999px;
+    background: var(--graphite);
+  }
+
+  .smart-home-slider::-moz-range-progress {
+    height: 4px;
+    border-radius: 999px;
+    background: var(--gold);
+  }
+
+  .smart-home-slider::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 999px;
+    background: var(--gold);
+    border: 2px solid var(--obsidian);
+    box-shadow: var(--shadow-card);
+  }
+
+  .smart-home-slider:focus-visible {
+    outline: none;
+  }
+
+  .smart-home-slider:focus-visible::-webkit-slider-thumb {
+    box-shadow: 0 0 0 3px var(--gold-soft);
+  }
+
+  .smart-home-slider:focus-visible::-moz-range-thumb {
+    box-shadow: 0 0 0 3px var(--gold-soft);
+  }
+
+  .security-lock-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cg fill='none' stroke='%23c9a96e' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='0.55'%3E%3Cpath d='M18 24v-4a6 6 0 0 1 12 0v4'/%3E%3Crect x='13' y='24' width='22' height='16' rx='3'/%3E%3Ccircle cx='24' cy='31' r='1.5' fill='%23c9a96e' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 56px 56px;
+  }
+
+  .cold-frost-edges {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+    opacity: 0.6;
+    mix-blend-mode: overlay;
+    -webkit-mask-image: radial-gradient(ellipse at center, transparent 45%, black 100%);
+    mask-image: radial-gradient(ellipse at center, transparent 45%, black 100%);
+  }
+
+  .heat-haze {
+    background-image: repeating-linear-gradient(to top, var(--ember-tint) 0px, transparent 3px, transparent 10px);
+    animation: heat-haze 3.4s ease-in-out infinite;
+  }
+
+  @keyframes heat-haze {
+    0%,
+    100% {
+      transform: translateY(0%);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translateY(-6%);
+      opacity: 0.85;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .heat-haze {
+      animation: none;
+      opacity: 0.6;
     }
   }
 }

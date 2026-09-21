@@ -3,6 +3,8 @@ import { MotionConfig } from 'motion/react'
 import { Footer } from '@/components/sections/Footer'
 import { Header } from '@/components/sections/Header'
 import { NoiseOverlay } from '@/components/noise/NoiseOverlay'
+import { SmartHomeEffects } from '@/components/smart-home/SmartHomeEffects'
+import { SmartHomeProvider } from '@/components/smart-home/SmartHomeContext'
 import { siteConfig } from '@/content/site'
 import { sans, serif } from '@/lib/fonts'
 import { GoogleAnalytics } from '@next/third-parties/google'
@@ -36,16 +38,19 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
     <html lang="en" className={`${sans.variable} ${serif.variable}`}>
       <body id="top" className="min-h-screen">
         <MotionConfig reducedMotion="user">
-          <a
-            href="#main-content"
-            className="bg-gold text-obsidian rounded-control focus-visible:ring-ring/50 sr-only px-4 py-2 text-sm font-medium focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus-visible:ring-3 focus-visible:outline-none"
-          >
-            Skip to main content
-          </a>
-          <NoiseOverlay />
-          <Header />
-          <main id="main-content">{children}</main>
-          <Footer />
+          <SmartHomeProvider>
+            <a
+              href="#main-content"
+              className="bg-gold text-obsidian rounded-control focus-visible:ring-ring/50 sr-only px-4 py-2 text-sm font-medium focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus-visible:ring-3 focus-visible:outline-none"
+            >
+              Skip to main content
+            </a>
+            <NoiseOverlay />
+            <SmartHomeEffects />
+            <Header />
+            <main id="main-content">{children}</main>
+            <Footer />
+          </SmartHomeProvider>
         </MotionConfig>
       </body>
       {gaTagId && <GoogleAnalytics gaId={gaTagId} />}

@@ -40,10 +40,9 @@ export default function Home() {
           <LocationCell />
         </Reveal>
 
-        {/* Lifestyle Grid */}
-        <Reveal className="[grid-area:technology]">
+        <div className="h-full [grid-area:technology]">
           <TechnologyCell />
-        </Reveal>
+        </div>
         <Reveal className="[grid-area:facility-1]" delay={0.05}>
           <IconTileCell id="facilities" item={facilitySpa} />
         </Reveal>
