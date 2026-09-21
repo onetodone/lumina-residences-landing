@@ -177,8 +177,8 @@ export function SmartHomePanel() {
       role="region"
       aria-label="Interactive smart home preview"
       className={cn(
-        'border-border rounded-control bg-graphite flex w-full shrink-0 flex-col gap-10 border p-4 md:w-56 md:gap-6',
-        isAmbientActive && 'relative z-[61]',
+        'border-border rounded-control bg-graphite relative flex w-full shrink-0 flex-col gap-10 border p-4 md:w-56 md:gap-6',
+        isAmbientActive ? 'smart-home-panel-active' : 'smart-home-panel-inactive',
       )}
     >
       <p className="text-muted-foreground text-[10px] tracking-[0.2em] uppercase">Lumina App</p>
