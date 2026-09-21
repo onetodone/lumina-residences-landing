@@ -37,7 +37,7 @@ export function HeroCell() {
       // mobile browser's chrome fully expanded) rather than `dvh` — `dvh`
       // tracks the chrome hiding/showing as the page scrolls, which made
       // this height visibly jump mid-scroll.
-      className="relative flex min-h-[calc(100svh-10rem)] flex-col justify-end p-6 md:min-h-0 md:p-10"
+      className="relative flex min-h-[calc(100svh-7rem)] flex-col justify-end p-6 md:min-h-0 md:p-10"
       onPointerEnter={() => setHovered(true)}
       onPointerLeave={() => setHovered(false)}
     >

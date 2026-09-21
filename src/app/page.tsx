@@ -23,7 +23,7 @@ const turnkeyItem = investmentHighlights.find((item) => item.id === 'management'
 
 export default function Home() {
   return (
-    <div className="mx-auto max-w-[1440px] px-6 pt-28 pb-6 md:px-16 md:pt-36 md:pb-24">
+    <div className="mx-auto max-w-[1440px] px-6 pt-20 pb-6 md:px-16 md:pt-36 md:pb-24">
       <BentoGrid>
         {/* Hero Grid */}
         <Reveal className="[grid-area:hero]">

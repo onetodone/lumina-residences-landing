@@ -1,5 +1,6 @@
 export const siteConfig = {
   name: 'Lumina Residences',
+  nameShort: 'Lumina',
   tagline: 'Elevated Living. Defined by Design.',
   details:
     'Discover Lumina Residences — an exclusive boutique development where minimalist aesthetics meet intelligent living, framed by 3.2m floor-to-ceiling windows. Experience a sanctuary of restrained luxury, meticulously crafted for the modern urbanite.',
@@ -11,11 +12,10 @@ export const siteConfig = {
 }
 
 export const navLinks = [
-  { label: 'Investment', href: '#investment' },
   { label: 'Facilities', href: '#facilities' },
+  { label: 'Investment', href: '#investment' },
   { label: 'Unit Types', href: '#unit-types' },
   { label: 'Gallery', href: '#gallery' },
-  { label: 'Location', href: '#location' },
   { label: 'Contact', href: '#tour' },
 ] as const
 

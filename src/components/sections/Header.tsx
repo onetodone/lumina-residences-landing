@@ -59,10 +59,10 @@ export function Header() {
       />
       <div className="relative mx-auto flex h-(--header-height) max-w-[1440px] items-center justify-between px-6 md:h-(--header-height-md) md:px-16">
         <Link href="#top" className="text-foreground font-serif text-xl md:text-2xl">
-          {siteConfig.name}
+          {siteConfig.nameShort}
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
+        <nav className="ms-auto me-8 hidden items-center gap-6 md:flex" aria-label="Primary">
           {navLinks.map((link) => (
             <Link
               key={link.href}
