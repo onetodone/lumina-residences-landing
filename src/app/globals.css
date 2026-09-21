@@ -483,6 +483,16 @@
       opacity: 0.6;
     }
   }
+
+  .smart-home-panel-active {
+    z-index: 61;
+    transition: z-index 0s linear 0s;
+  }
+
+  .smart-home-panel-inactive {
+    z-index: 0;
+    transition: z-index 0s linear var(--duration-slow);
+  }
 }
 
 /*

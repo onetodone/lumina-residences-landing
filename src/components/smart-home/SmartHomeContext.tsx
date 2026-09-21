@@ -1,7 +1,6 @@
 'use client'
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
-import { duration } from '@/lib/motion'
 import { COLD_THRESHOLD, MAX_TEMP, MIN_TEMP, WARM_THRESHOLD, type LightingMode } from './constants'
 
 interface SmartHomeState {
@@ -40,20 +39,7 @@ export function SmartHomeProvider({ children }: { children: ReactNode }) {
 
   const coldIntensity = temperature < COLD_THRESHOLD ? (COLD_THRESHOLD - temperature) / (COLD_THRESHOLD - MIN_TEMP) : 0
   const warmIntensity = temperature > WARM_THRESHOLD ? (temperature - WARM_THRESHOLD) / (MAX_TEMP - WARM_THRESHOLD) : 0
-  const rawAmbientActive = lighting !== 'default' || coldIntensity > 0 || warmIntensity > 0 || armed
-
-  const [isAmbientActive, setIsAmbientActive] = useState(rawAmbientActive)
-  const [prevRawActive, setPrevRawActive] = useState(rawAmbientActive)
-  if (rawAmbientActive !== prevRawActive) {
-    setPrevRawActive(rawAmbientActive)
-    if (rawAmbientActive) setIsAmbientActive(true)
-  }
-
-  useEffect(() => {
-    if (rawAmbientActive) return
-    const timeout = setTimeout(() => setIsAmbientActive(false), duration.slow * 1000)
-    return () => clearTimeout(timeout)
-  }, [rawAmbientActive])
+  const isAmbientActive = lighting !== 'default' || coldIntensity > 0 || warmIntensity > 0 || armed
 
   return (
     <SmartHomeContext.Provider
