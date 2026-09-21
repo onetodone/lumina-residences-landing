@@ -100,11 +100,13 @@
   }
   html {
     @apply font-sans;
-    scroll-padding-top: var(--header-height);
+    /* header height plus a little breathing room, so anchored sections don't sit flush against the navbar */
+    scroll-padding-top: calc(var(--header-height) + 1rem);
+    scrollbar-gutter: stable;
   }
   @media (min-width: 768px) {
     html {
-      scroll-padding-top: var(--header-height-md);
+      scroll-padding-top: calc(var(--header-height-md) + 1rem);
     }
   }
   @media (prefers-reduced-motion: no-preference) {

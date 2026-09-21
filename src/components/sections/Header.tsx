@@ -48,15 +48,16 @@ export function Header() {
   }, [])
 
   return (
-    <header
-      className={cn(
-        'ease-luxury fixed inset-x-0 top-0 z-40 transition-colors duration-(--duration-base)',
-        scrolled
-          ? 'border-border bg-obsidian/70 border-b backdrop-blur-xl'
-          : 'border-b border-transparent bg-transparent',
-      )}
-    >
-      <div className="mx-auto flex h-(--header-height) max-w-[1440px] items-center justify-between px-6 md:h-(--header-height-md) md:px-16">
+    <header className="fixed inset-x-0 top-0 z-40">
+      <div
+        className={cn(
+          'ease-luxury absolute inset-0 transition-colors duration-(--duration-base)',
+          scrolled
+            ? 'border-border bg-obsidian/70 border-b backdrop-blur-xl'
+            : 'border-b border-transparent bg-transparent',
+        )}
+      />
+      <div className="relative mx-auto flex h-(--header-height) max-w-[1440px] items-center justify-between px-6 md:h-(--header-height-md) md:px-16">
         <Link href="#top" className="text-foreground font-serif text-xl md:text-2xl">
           {siteConfig.name}
         </Link>

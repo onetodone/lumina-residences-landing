@@ -3,7 +3,6 @@ import { investmentHighlights } from '@/content/investment'
 import { eyebrowClassName, featureIcons } from './cell-styles'
 
 type InvestmentStatCardProps = {
-  id?: string
   icon: string
   figure: string
   label: string
@@ -26,11 +25,11 @@ function Sparkline() {
   )
 }
 
-function InvestmentStatCard({ id, icon, figure, label, description }: InvestmentStatCardProps) {
+function InvestmentStatCard({ icon, figure, label, description }: InvestmentStatCardProps) {
   const Icon = featureIcons[icon]
 
   return (
-    <BentoCard id={id} className="flex h-full flex-col gap-2 p-5 md:p-6">
+    <BentoCard className="flex h-full flex-col gap-2 p-5 md:p-6">
       {Icon && <Icon aria-hidden className="text-gold size-5" />}
       <p className="text-foreground font-serif text-3xl md:text-4xl">{figure}</p>
       <div>
@@ -48,7 +47,6 @@ const appreciationItem = investmentHighlights.find((item) => item.id === 'apprec
 export function YieldStatCell() {
   return (
     <InvestmentStatCard
-      id="investment"
       icon={yieldItem.icon}
       figure="8–10%"
       label={yieldItem.name}

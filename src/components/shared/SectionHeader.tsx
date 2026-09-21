@@ -3,6 +3,7 @@ import { eyebrowClassName } from '@/components/cells/cell-styles'
 import { cn } from '@/lib/utils'
 
 type SectionHeaderProps = {
+  id?: string
   eyebrow: string
   title: ReactNode
   description?: ReactNode
@@ -11,9 +12,18 @@ type SectionHeaderProps = {
   className?: string
 }
 
-export function SectionHeader({ eyebrow, title, description, actions, align = 'left', className }: SectionHeaderProps) {
+export function SectionHeader({
+  id,
+  eyebrow,
+  title,
+  description,
+  actions,
+  align = 'left',
+  className,
+}: SectionHeaderProps) {
   return (
     <div
+      id={id}
       className={cn(
         'mt-4 flex flex-col gap-6 px-5 md:flex-row md:items-end md:justify-between md:px-6',
         align === 'center' && 'md:flex-col md:items-center',

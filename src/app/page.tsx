@@ -59,6 +59,7 @@ export default function Home() {
         {/* Data Grid */}
         <Reveal className="[grid-area:invest-header]">
           <SectionHeader
+            id="investment"
             eyebrow={investmentIntro.eyebrow}
             title={investmentIntro.heading}
             description={investmentIntro.description}
