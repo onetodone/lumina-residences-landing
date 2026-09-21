@@ -1,5 +1,6 @@
 'use client'
 
+import type { MouseEvent } from 'react'
 import { useEffect, useId, useRef, useState } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
@@ -10,6 +11,7 @@ import { ctaLabel, navLinks, siteConfig } from '@/content/site'
 import { useScrollHeader } from '@/lib/hooks/useScrollHeader'
 import { useFocusTrap } from '@/lib/hooks/useFocusTrap'
 import { duration, easeLuxury } from '@/lib/motion'
+import { scrollToHash } from '@/lib/scrollToHash'
 
 export function Header() {
   const scrolled = useScrollHeader()
@@ -21,6 +23,11 @@ export function Header() {
   const closeMenu = () => {
     setMenuOpen(false)
     menuButtonRef.current?.focus()
+  }
+
+  const handleAnchorClick = (event: MouseEvent<HTMLAnchorElement>, hash: string) => {
+    event.preventDefault()
+    scrollToHash(hash)
   }
 
   useEffect(() => {
@@ -58,7 +65,11 @@ export function Header() {
         )}
       />
       <div className="relative mx-auto flex h-(--header-height) max-w-[1440px] items-center justify-between px-6 md:h-(--header-height-md) md:px-16">
-        <Link href="#top" className="text-foreground font-serif text-xl md:text-2xl">
+        <Link
+          href="#top"
+          onClick={(event) => handleAnchorClick(event, '#top')}
+          className="text-foreground font-serif text-xl md:text-2xl"
+        >
           {siteConfig.nameShort}
         </Link>
 
@@ -67,6 +78,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
+              onClick={(event) => handleAnchorClick(event, link.href)}
               className="text-muted-foreground hover:text-foreground text-sm transition-colors duration-(--duration-fast)"
             >
               {link.label}
@@ -75,7 +87,14 @@ export function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <Button nativeButton={false} render={<Link href="#tour">{ctaLabel}</Link>} />
+          <Button
+            nativeButton={false}
+            render={
+              <Link href="#tour" onClick={(event) => handleAnchorClick(event, '#tour')}>
+                {ctaLabel}
+              </Link>
+            }
+          />
         </div>
 
         <button
@@ -110,7 +129,10 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  onClick={closeMenu}
+                  onClick={(event) => {
+                    handleAnchorClick(event, link.href)
+                    closeMenu()
+                  }}
                   className="text-foreground font-serif text-3xl"
                 >
                   {link.label}
@@ -121,7 +143,13 @@ export function Header() {
               size="lg"
               nativeButton={false}
               render={
-                <Link href="#tour" onClick={closeMenu}>
+                <Link
+                  href="#tour"
+                  onClick={(event) => {
+                    handleAnchorClick(event, '#tour')
+                    closeMenu()
+                  }}
+                >
                   {ctaLabel}
                 </Link>
               }

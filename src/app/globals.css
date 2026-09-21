@@ -132,8 +132,8 @@
    * metric-b/location), Lifestyle Grid (technology/facility-1..4), Data Grid
    * (invest-header/invest-yield/invest-appreciation/invest-payment/
    * invest-turnkey), Layout Grid (unit-types), Closing Grid (developer/
-   * tour-form) — plus a masonry Gallery cell after Unit Types (added later,
-   * not part of the original 5-section design). DOM order always
+   * tour-form) — plus a masonry Gallery cell after the Lifestyle Grid (added
+   * later, not part of the original 5-section design). DOM order always
    * follows the mobile stacking order (see PLAN.md section 2). At md/xl,
    * named grid-template-areas re-place cells without touching DOM order, so
    * Tab/reading order stays logical at every breakpoint. Most row heights
@@ -178,7 +178,9 @@
   @media (min-width: 768px) {
     .bento-grid {
       grid-template-columns: repeat(6, 1fr);
-      grid-template-rows: repeat(11, 200px) auto repeat(4, 200px) repeat(5, minmax(200px, auto)) repeat(6, 200px);
+      grid-template-rows:
+        repeat(11, 200px) repeat(3, minmax(200px, auto)) auto repeat(4, 200px) repeat(2, minmax(200px, auto))
+        repeat(6, 200px);
       grid-template-areas:
         'hero hero hero hero hero hero'
         'hero hero hero hero hero hero'
@@ -191,6 +193,9 @@
         'facility-2 facility-2 facility-2 facility-2 facility-2 facility-2'
         'facility-3 facility-3 facility-3 facility-3 facility-3 facility-3'
         'facility-4 facility-4 facility-4 facility-4 facility-4 facility-4'
+        'gallery gallery gallery gallery gallery gallery'
+        'gallery gallery gallery gallery gallery gallery'
+        'gallery gallery gallery gallery gallery gallery'
         'invest-header invest-header invest-header invest-header invest-header invest-header'
         'invest-yield invest-yield invest-yield invest-yield invest-yield invest-yield'
         'invest-appreciation invest-appreciation invest-appreciation invest-appreciation invest-appreciation invest-appreciation'
@@ -198,9 +203,6 @@
         'invest-turnkey invest-turnkey invest-turnkey invest-turnkey invest-turnkey invest-turnkey'
         'unit-types unit-types unit-types unit-types unit-types unit-types'
         'unit-types unit-types unit-types unit-types unit-types unit-types'
-        'gallery gallery gallery gallery gallery gallery'
-        'gallery gallery gallery gallery gallery gallery'
-        'gallery gallery gallery gallery gallery gallery'
         'developer developer developer developer developer developer'
         'developer developer developer developer developer developer'
         'tour-form tour-form tour-form tour-form tour-form tour-form'
@@ -213,19 +215,21 @@
   @media (min-width: 1280px) {
     .bento-grid {
       grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: repeat(4, 220px) auto 220px repeat(5, minmax(220px, auto)) repeat(4, 220px);
+      grid-template-rows:
+        repeat(4, 220px) repeat(3, minmax(220px, auto)) auto 220px repeat(2, minmax(220px, auto))
+        repeat(4, 220px);
       grid-template-areas:
         'hero hero hero hero hero hero hero hero metric-a metric-a metric-b metric-b'
         'hero hero hero hero hero hero hero hero location location location location'
         'technology technology technology technology technology technology facility-1 facility-1 facility-1 facility-2 facility-2 facility-2'
         'technology technology technology technology technology technology facility-3 facility-3 facility-3 facility-4 facility-4 facility-4'
+        'gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery'
+        'gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery'
+        'gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery'
         'invest-header invest-header invest-header invest-header invest-header invest-header invest-header invest-header invest-header invest-header invest-header invest-header'
         'invest-yield invest-yield invest-yield invest-appreciation invest-appreciation invest-appreciation invest-payment invest-payment invest-payment invest-payment invest-turnkey invest-turnkey'
         'unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types'
         'unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types'
-        'gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery'
-        'gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery'
-        'gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery gallery'
         'developer developer developer developer developer developer tour-form tour-form tour-form tour-form tour-form tour-form'
         'developer developer developer developer developer developer tour-form tour-form tour-form tour-form tour-form tour-form'
         'developer developer developer developer developer developer tour-form tour-form tour-form tour-form tour-form tour-form'
