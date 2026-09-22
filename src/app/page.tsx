@@ -1,5 +1,5 @@
 import { BentoGrid } from '@/components/bento/BentoGrid'
-import { DeveloperCell } from '@/components/cells/DeveloperCell'
+import { DeveloperInfo } from '@/components/cells/DeveloperInfo'
 import { GalleryCell } from '@/components/cells/GalleryCell'
 import { HeroCell } from '@/components/cells/HeroCell'
 import { IconTileCell } from '@/components/cells/IconTileCell'
@@ -11,7 +11,7 @@ import { TechnologyCell } from '@/components/cells/TechnologyCell'
 import { UnitTypesCell } from '@/components/cells/UnitTypesCell'
 import { Reveal } from '@/components/motion/Reveal'
 import { SectionHeader } from '@/components/shared/SectionHeader'
-import { TourForm } from '@/components/sections/TourForm'
+import { TourCta } from '@/components/sections/TourCta'
 import { facilitiesAmenities } from '@/content/amenities'
 import { investmentHighlights, investmentIntro } from '@/content/investment'
 import { findById } from '@/content/types'
@@ -90,10 +90,10 @@ export default function Home() {
 
         {/* Closing Grid */}
         <Reveal className="[grid-area:developer]">
-          <DeveloperCell />
+          <DeveloperInfo />
         </Reveal>
-        <Reveal className="[grid-area:tour-form]" delay={0.05}>
-          <TourForm />
+        <Reveal className="[grid-area:tour]" delay={0.05}>
+          <TourCta />
         </Reveal>
       </BentoGrid>
     </div>

@@ -3,12 +3,15 @@ import {
   Dumbbell,
   EyeOff,
   Flower2,
+  Home,
   KeyRound,
   Leaf,
   LineChart,
   Smartphone,
   Sofa,
+  Sparkles,
   TrendingUp,
+  Users,
   Wallet,
   type LucideIcon,
 } from 'lucide-react'
@@ -29,4 +32,7 @@ export const featureIcons: Record<string, LucideIcon> = {
   Smartphone,
   EyeOff,
   Leaf,
+  Home,
+  Sparkles,
+  Users,
 }

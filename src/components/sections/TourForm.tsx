@@ -2,15 +2,19 @@
 
 import { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { format, parseISO, startOfToday } from 'date-fns'
 import { AnimatePresence, motion } from 'motion/react'
-import { Check } from 'lucide-react'
-import { useForm } from 'react-hook-form'
+import { Calendar as CalendarIcon, Check } from 'lucide-react'
+import { Controller, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { BentoCard } from '@/components/bento/BentoCard'
 import { eyebrowClassName } from '@/components/cells/cell-styles'
 import { Button } from '@/components/ui/button'
+import { Calendar } from '@/components/ui/calendar'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { unitCategories, type UnitCategory } from '@/content/unit-types'
 import { duration, easeLuxury } from '@/lib/motion'
+import { cn } from '@/lib/utils'
 
 const TYPE_LABEL: Record<UnitCategory, string> = {
   studio: 'Studio',
@@ -32,19 +36,21 @@ type TourRequestValues = z.infer<typeof tourRequestSchema>
 const fieldClassName =
   'rounded-control border-border bg-background/60 text-foreground focus-visible:border-ring focus-visible:ring-ring/50 w-full border px-3.5 py-2.5 text-sm outline-none focus-visible:ring-3'
 
-const labelClassName = 'text-muted-foreground text-xs tracking-wide uppercase'
+const labelClassName = 'ps-3 text-muted-foreground text-xs tracking-wide uppercase'
 
 /** Tour request section: client-validated form (zod + react-hook-form), mock submit and success state (SPEC.md section 4E). No backend — nothing is actually sent. */
 export function TourForm() {
   const [submitted, setSubmitted] = useState(false)
+  const [datePickerOpen, setDatePickerOpen] = useState(false)
   const {
     register,
+    control,
     handleSubmit,
     reset,
     formState: { errors, isSubmitting },
   } = useForm<TourRequestValues>({
     resolver: zodResolver(tourRequestSchema),
-    defaultValues: { residenceType: 'studio' },
+    defaultValues: { residenceType: 'studio', preferredDate: '' },
   })
 
   const onSubmit = handleSubmit(async () => {
@@ -58,13 +64,10 @@ export function TourForm() {
   }
 
   return (
-    <BentoCard id="tour" className="flex h-full flex-col overflow-y-auto p-6 md:p-8">
+    <BentoCard className="flex h-full flex-col overflow-y-auto p-6 md:p-8">
       <span className={eyebrowClassName}>Schedule a Tour</span>
       <h2 className="text-foreground mt-2 font-serif text-2xl md:text-3xl">Request a Private Tour</h2>
-      <p className="text-muted-foreground mt-2 text-sm">
-        Tell us a little about what you are looking for and our sales team will follow up. This is a portfolio demo, so
-        no request is actually sent.
-      </p>
+      <p className="text-muted-foreground mt-2 text-sm">This is a portfolio demo — no request is actually sent.</p>
 
       <AnimatePresence mode="wait" initial={false}>
         {submitted ? (
@@ -97,9 +100,9 @@ export function TourForm() {
             transition={{ duration: duration.fast, ease: easeLuxury }}
             onSubmit={onSubmit}
             noValidate
-            className="mt-6 grid grid-cols-1 gap-4"
+            className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-2"
           >
-            <label className="flex flex-col gap-1.5">
+            <label className="flex flex-col gap-1.5 md:col-span-2">
               <span className={labelClassName}>Full name</span>
               <input
                 {...register('name')}
@@ -107,10 +110,11 @@ export function TourForm() {
                 autoComplete="name"
                 aria-invalid={!!errors.name}
                 aria-describedby={errors.name ? 'name-error' : undefined}
+                tabIndex={1}
                 className={fieldClassName}
               />
               {errors.name && (
-                <span id="name-error" role="alert" className="text-destructive text-xs">
+                <span id="name-error" role="alert" className="text-destructive ps-3 text-xs">
                   {errors.name.message}
                 </span>
               )}
@@ -124,10 +128,11 @@ export function TourForm() {
                 autoComplete="email"
                 aria-invalid={!!errors.email}
                 aria-describedby={errors.email ? 'email-error' : undefined}
+                tabIndex={2}
                 className={fieldClassName}
               />
               {errors.email && (
-                <span id="email-error" role="alert" className="text-destructive text-xs">
+                <span id="email-error" role="alert" className="text-destructive ps-3 text-xs">
                   {errors.email.message}
                 </span>
               )}
@@ -141,34 +146,63 @@ export function TourForm() {
                 autoComplete="tel"
                 aria-invalid={!!errors.phone}
                 aria-describedby={errors.phone ? 'phone-error' : undefined}
+                tabIndex={3}
                 className={fieldClassName}
               />
               {errors.phone && (
-                <span id="phone-error" role="alert" className="text-destructive text-xs">
+                <span id="phone-error" role="alert" className="text-destructive ps-3 text-xs">
                   {errors.phone.message}
                 </span>
               )}
             </label>
 
-            <label className="flex flex-col gap-1.5">
-              <span className={labelClassName}>Preferred date</span>
-              <input
-                {...register('preferredDate')}
-                type="date"
-                aria-invalid={!!errors.preferredDate}
-                aria-describedby={errors.preferredDate ? 'preferred-date-error' : undefined}
-                className={fieldClassName}
+            <div className="flex flex-col gap-1.5">
+              <span id="preferred-date-label" className={labelClassName}>
+                Preferred date
+              </span>
+              <Controller
+                control={control}
+                name="preferredDate"
+                render={({ field }) => (
+                  <Popover open={datePickerOpen} onOpenChange={setDatePickerOpen}>
+                    <PopoverTrigger
+                      type="button"
+                      aria-labelledby="preferred-date-label"
+                      aria-invalid={!!errors.preferredDate}
+                      aria-describedby={errors.preferredDate ? 'preferred-date-error' : undefined}
+                      tabIndex={4}
+                      className={cn(fieldClassName, 'flex items-center justify-between gap-2 text-left')}
+                    >
+                      <span className={field.value ? undefined : 'text-muted-foreground'}>
+                        {field.value ? format(parseISO(field.value), 'PPP') : 'Select a date'}
+                      </span>
+                      <CalendarIcon aria-hidden className="text-muted-foreground size-4 shrink-0" />
+                    </PopoverTrigger>
+                    <PopoverContent align="start" className="w-auto p-0">
+                      <Calendar
+                        mode="single"
+                        selected={field.value ? parseISO(field.value) : undefined}
+                        onSelect={(date) => {
+                          field.onChange(date ? format(date, 'yyyy-MM-dd') : '')
+                          setDatePickerOpen(false)
+                        }}
+                        disabled={{ before: startOfToday() }}
+                        autoFocus
+                      />
+                    </PopoverContent>
+                  </Popover>
+                )}
               />
               {errors.preferredDate && (
-                <span id="preferred-date-error" role="alert" className="text-destructive text-xs">
+                <span id="preferred-date-error" role="alert" className="text-destructive ps-3 text-xs">
                   {errors.preferredDate.message}
                 </span>
               )}
-            </label>
+            </div>
 
             <label className="flex flex-col gap-1.5">
               <span className={labelClassName}>Residence type</span>
-              <select {...register('residenceType')} className={fieldClassName}>
+              <select {...register('residenceType')} tabIndex={5} className={fieldClassName}>
                 {unitCategories.map((type) => (
                   <option key={type} value={type}>
                     {TYPE_LABEL[type]}
@@ -177,24 +211,25 @@ export function TourForm() {
               </select>
             </label>
 
-            <label className="flex flex-col gap-1.5">
+            <label className="flex flex-col gap-1.5 md:col-span-2">
               <span className={labelClassName}>Message (optional)</span>
               <textarea
                 {...register('message')}
                 rows={3}
                 aria-invalid={!!errors.message}
                 aria-describedby={errors.message ? 'message-error' : undefined}
-                className={fieldClassName}
+                tabIndex={6}
+                className={`${fieldClassName} resize-none`}
               />
               {errors.message && (
-                <span id="message-error" role="alert" className="text-destructive text-xs">
+                <span id="message-error" role="alert" className="text-destructive ps-3 text-xs">
                   {errors.message.message}
                 </span>
               )}
             </label>
 
-            <div>
-              <Button type="submit" size="lg" disabled={isSubmitting}>
+            <div className="flex justify-end md:col-span-2">
+              <Button type="submit" size="lg" disabled={isSubmitting} tabIndex={7} className="w-full md:w-auto">
                 {isSubmitting ? 'Sending…' : 'Request a Tour'}
               </Button>
             </div>
