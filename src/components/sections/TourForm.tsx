@@ -38,7 +38,7 @@ const fieldClassName =
 
 const labelClassName = 'ps-3 text-muted-foreground text-xs tracking-wide uppercase'
 
-/** Tour request section: client-validated form (zod + react-hook-form), mock submit and success state (SPEC.md section 4E). No backend — nothing is actually sent. */
+/** Tour request section: client-validated form (zod + react-hook-form), mock submit and success state. No backend — nothing is actually sent. */
 export function TourForm() {
   const [submitted, setSubmitted] = useState(false)
   const [datePickerOpen, setDatePickerOpen] = useState(false)

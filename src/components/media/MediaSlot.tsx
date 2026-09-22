@@ -13,7 +13,7 @@ type MediaSlotProps = {
 /**
  * Renders the real image when `slot.src` is set, otherwise an elegant
  * gradient + noise fallback — every media slot must degrade gracefully
- * rather than showing a broken image (SPEC.md section 6).
+ * rather than showing a broken image.
  */
 export function MediaSlot({ slot, className, priority, sizes = '100vw' }: MediaSlotProps) {
   return (

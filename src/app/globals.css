@@ -25,7 +25,7 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* Lumina brand tokens (see PLAN.md section 3) */
+  /* Lumina brand tokens */
   --color-obsidian: var(--obsidian);
   --color-graphite: var(--graphite);
   --color-gold: var(--gold);
@@ -134,11 +134,11 @@
    * invest-turnkey), Layout Grid (unit-types), Closing Grid (developer/
    * tour) — plus a masonry Gallery cell after the Lifestyle Grid (added
    * later, not part of the original 5-section design). DOM order always
-   * follows the mobile stacking order (see PLAN.md section 2). At md/xl,
+   * follows the mobile stacking order. At md/xl,
    * named grid-template-areas re-place cells without touching DOM order, so
    * Tab/reading order stays logical at every breakpoint. Most row heights
-   * are fixed pixel values, kept for deliberate visual control (PLAN.md
-   * section 2); invest-header/unit-types/gallery/developer/tour are
+   * are fixed pixel values, kept for deliberate visual control; 
+   * invest-header/unit-types/gallery/developer/tour are
    * `auto`/`minmax(_, auto)` instead, since their content height varies
    * (SectionHeader copy length, unit-type block count, photo grid size, the
    * Tour CTA's two-column split and form validation messages) — each is the
