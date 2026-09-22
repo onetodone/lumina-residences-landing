@@ -8,7 +8,7 @@ export const siteConfig = {
     'Lumina Residences is a fictional boutique development in the Harbor Quarter of Aveline: 48 exclusive residences, designed around light and intelligent living. Created as a portfolio project — the development, developer, and people are invented.',
   developer: 'Aura Development Group',
   developerBlurb:
-    'Pioneering the next generation of real estate. Aura Development Group specializes in boutique, design-led residential projects that challenge the status quo. With a track record of delivering award-winning properties on time and to exact specifications, we build more than structures — we craft enduring lifestyles.',
+    'Pioneering the next generation of real estate. Aura Development Group specializes in boutique, design-led residential projects that challenge the status quo.',
 }
 
 export const navLinks = [

@@ -132,16 +132,18 @@
    * metric-b/location), Lifestyle Grid (technology/facility-1..4), Data Grid
    * (invest-header/invest-yield/invest-appreciation/invest-payment/
    * invest-turnkey), Layout Grid (unit-types), Closing Grid (developer/
-   * tour-form) — plus a masonry Gallery cell after the Lifestyle Grid (added
+   * tour) — plus a masonry Gallery cell after the Lifestyle Grid (added
    * later, not part of the original 5-section design). DOM order always
    * follows the mobile stacking order (see PLAN.md section 2). At md/xl,
    * named grid-template-areas re-place cells without touching DOM order, so
    * Tab/reading order stays logical at every breakpoint. Most row heights
    * are fixed pixel values, kept for deliberate visual control (PLAN.md
-   * section 2); invest-header/unit-types/gallery are `auto`/`minmax(_, auto)`
-   * instead, since their content height varies (SectionHeader copy length,
-   * unit-type block count, photo grid size) — each is the exclusive
-   * occupant of its row(s), so growing them doesn't disturb any fixed row.
+   * section 2); invest-header/unit-types/gallery/developer/tour are
+   * `auto`/`minmax(_, auto)` instead, since their content height varies
+   * (SectionHeader copy length, unit-type block count, photo grid size, the
+   * Tour CTA's two-column split and form validation messages) — each is the
+   * exclusive occupant of its row(s), so growing them doesn't disturb any
+   * fixed row.
    *
    * The base layout also declares one named row per cell (auto height) even
    * though it's a plain single-column stack — every cell sets its grid-area
@@ -172,7 +174,7 @@
       'unit-types'
       'gallery'
       'developer'
-      'tour-form';
+      'tour';
   }
 
   @media (min-width: 768px) {
@@ -180,7 +182,7 @@
       grid-template-columns: repeat(6, 1fr);
       grid-template-rows:
         repeat(11, 200px) repeat(3, minmax(200px, auto)) auto repeat(4, 200px) repeat(2, minmax(200px, auto))
-        repeat(6, 200px);
+        repeat(2, auto);
       grid-template-areas:
         'hero hero hero hero hero hero'
         'hero hero hero hero hero hero'
@@ -204,11 +206,7 @@
         'unit-types unit-types unit-types unit-types unit-types unit-types'
         'unit-types unit-types unit-types unit-types unit-types unit-types'
         'developer developer developer developer developer developer'
-        'developer developer developer developer developer developer'
-        'tour-form tour-form tour-form tour-form tour-form tour-form'
-        'tour-form tour-form tour-form tour-form tour-form tour-form'
-        'tour-form tour-form tour-form tour-form tour-form tour-form'
-        'tour-form tour-form tour-form tour-form tour-form tour-form';
+        'tour tour tour tour tour tour';
     }
   }
 
@@ -217,7 +215,7 @@
       grid-template-columns: repeat(12, 1fr);
       grid-template-rows:
         repeat(4, 220px) repeat(3, minmax(220px, auto)) auto 220px repeat(2, minmax(220px, auto))
-        repeat(4, 220px);
+        repeat(2, auto);
       grid-template-areas:
         'hero hero hero hero hero hero hero hero metric-a metric-a metric-b metric-b'
         'hero hero hero hero hero hero hero hero location location location location'
@@ -230,10 +228,8 @@
         'invest-yield invest-yield invest-yield invest-appreciation invest-appreciation invest-appreciation invest-payment invest-payment invest-payment invest-payment invest-turnkey invest-turnkey'
         'unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types'
         'unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types unit-types'
-        'developer developer developer developer developer developer tour-form tour-form tour-form tour-form tour-form tour-form'
-        'developer developer developer developer developer developer tour-form tour-form tour-form tour-form tour-form tour-form'
-        'developer developer developer developer developer developer tour-form tour-form tour-form tour-form tour-form tour-form'
-        'developer developer developer developer developer developer tour-form tour-form tour-form tour-form tour-form tour-form';
+        'developer developer developer developer developer developer developer developer developer developer developer developer'
+        'tour tour tour tour tour tour tour tour tour tour tour tour';
     }
   }
 
