@@ -36,8 +36,10 @@ function EffectLayer({
  * transformed ancestor (`BentoCard`'s hover lift would otherwise become its
  * containing block). The Security overlay is the only layer that captures
  * pointer events (it blocks interaction with the rest of the page while
- * armed); `SmartHomePanel` sits above all of these layers via its own
- * z-index so the control panel always stays visible and reachable.
+ * armed); the Technology card itself rises above all of these layers (see
+ * the `:has(.smart-home-panel-active)` rules in globals.css) while
+ * `SmartHomePanel` is active, so the control panel always stays visible and
+ * reachable.
  */
 export function SmartHomeEffects() {
   const { lighting, armed, coldIntensity, warmIntensity } = useSmartHome()

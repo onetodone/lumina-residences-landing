@@ -298,10 +298,10 @@
    */
   .bento-interactive {
     --bento-hover-scale: 1.015;
+    --bento-lift-transition:
+      transform var(--duration-base) var(--ease-luxury), box-shadow var(--duration-base) var(--ease-luxury);
 
-    transition:
-      transform var(--duration-base) var(--ease-luxury),
-      box-shadow var(--duration-base) var(--ease-luxury);
+    transition: var(--bento-lift-transition);
   }
 
   .bento-interactive::after {
@@ -488,12 +488,26 @@
     }
   }
 
-  .smart-home-panel-active {
+  .bento-surface:has(.smart-home-panel-active) {
+    z-index: 61;
+    transition:
+      var(--bento-lift-transition),
+      z-index 0s linear 0s;
+  }
+
+  .bento-surface:has(.smart-home-panel-inactive) {
+    z-index: 0;
+    transition:
+      var(--bento-lift-transition),
+      z-index 0s linear var(--duration-slow);
+  }
+
+  .reveal:has(.smart-home-panel-active) {
     z-index: 61;
     transition: z-index 0s linear 0s;
   }
 
-  .smart-home-panel-inactive {
+  .reveal:has(.smart-home-panel-inactive) {
     z-index: 0;
     transition: z-index 0s linear var(--duration-slow);
   }
