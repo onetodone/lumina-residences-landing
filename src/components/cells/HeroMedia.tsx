@@ -9,8 +9,8 @@ const PLAYBACK_RATE = 0.6
 
 /**
  * Background video when `heroVideo.src` is set, falling back to the poster
- * image, falling back further to the gradient + noise slot — SPEC.md section
- * 4B.1 / section 6. Plays once at `PLAYBACK_RATE` and stops on the final
+ * image, falling back further to the gradient + noise slot.
+ * Plays once at `PLAYBACK_RATE` and stops on the final
  * frame instead of looping. Reduced motion pauses the video rather than
  * never starting it, so a poster frame is still shown.
  *

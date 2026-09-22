@@ -6,8 +6,7 @@ export type Track = {
 /**
  * Smart-home widget playlist (`SmartHomePanel`'s Music row). `src: null`
  * renders the same way a pending `media.ts` image slot does — present in
- * the UI, just not playable yet. See `docs/media.md` for the file format
- * and where to drop the audio files.
+ * the UI, just not playable yet.
  */
 export const musicTracks: Track[] = [
   { title: 'Track 1', src: '/media/audio-01.mp3' },

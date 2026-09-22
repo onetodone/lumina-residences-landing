@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og'
 
-export const alt = 'Lumina Residences — Elevated Living'
+export const alt = 'Lumina Residences — Web Developer Portfolio by OneToDone'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -39,6 +39,18 @@ export default async function Image() {
         }}
       >
         Elevated Living. Defined by Design.
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          fontFamily: 'sans-serif',
+          fontSize: 22,
+          letterSpacing: 2,
+          textTransform: 'uppercase',
+          color: '#C9A96E',
+        }}
+      >
+        Portfolio Case by OneToDone
       </div>
     </div>,
     {

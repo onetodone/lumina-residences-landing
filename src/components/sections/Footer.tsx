@@ -2,17 +2,17 @@
 
 import Link from 'next/link'
 import { FacebookIcon, InstagramIcon, LinkedinIcon } from '@/components/shared/SocialIcons'
-import { navLinks, siteConfig } from '@/content/site'
+import { navLinks, siteConfig, studioConfig } from '@/content/site'
 import { scrollToHash } from '@/lib/scrollToHash'
 
-// Decorative only — there are no real social accounts behind this fictional project.
+// Real accounts of the developer behind this case, styled to fit the fictional footer.
 const socialLinks = [
   { label: 'Instagram', icon: InstagramIcon, url: 'https://www.instagram.com/swipeek' },
-  { label: 'LinkedIn', icon: LinkedinIcon, url: 'https://www.linkedin.com/in/anton-holubeu/' },
+  { label: 'LinkedIn', icon: LinkedinIcon, url: studioConfig.linkedin },
   { label: 'Facebook', icon: FacebookIcon, url: 'https://www.facebook.com/profile.php?id=61593807187808' },
 ]
 
-/** Footer: developer info, fictional address, social icons, and the portfolio disclaimer (SPEC.md section 4F). Social icons are decorative — there are no real accounts behind this fictional project. */
+/** Footer: in-story developer blurb, fictional address, social icons, and the real "built by" credit. The in-story name/blurb above the fold are fictional; the closing credit line and social icons are real. */
 export function Footer() {
   return (
     <footer className="border-border border-t">
@@ -57,8 +57,34 @@ export function Footer() {
         </div>
 
         <p className="text-muted-foreground border-border mt-10 border-t pt-6 text-xs">
-          Lumina Residences is a fictional project created for portfolio purposes. Names, imagery, and figures shown are
-          invented and do not represent a real development.
+          Lumina Residences is a fictional project — a front-end portfolio Case built by{' '}
+          <a
+            href={studioConfig.telegram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gold hover:text-foreground transition-colors duration-(--duration-fast)"
+          >
+            {studioConfig.name}
+          </a>{' '}
+          ({studioConfig.founder}). Names, imagery, and figures shown are invented. Let&apos;s build something real —{' '}
+          <a
+            href={studioConfig.telegram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gold hover:text-foreground transition-colors duration-(--duration-fast)"
+          >
+            Telegram
+          </a>{' '}
+          ·{' '}
+          <a
+            href={studioConfig.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gold hover:text-foreground transition-colors duration-(--duration-fast)"
+          >
+            LinkedIn
+          </a>
+          .
         </p>
       </div>
     </footer>
