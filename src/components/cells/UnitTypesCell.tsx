@@ -9,7 +9,7 @@ export function UnitTypesCell() {
     <div id="unit-types" className="flex flex-col gap-5">
       <SectionHeader
         eyebrow="Unit Types"
-        title="Spaces that Breathe"
+        title="Spaces that Breathe."
         description="Choose from 3 bespoke layouts. Every residence features warm oak flooring, matte-finish bespoke cabinetry, and spa-inspired bathrooms with brushed gunmetal fixtures."
       />
 
