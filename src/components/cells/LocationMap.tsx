@@ -145,7 +145,7 @@ export function LocationMap() {
   }, [])
 
   useEffect(() => {
-    if (!MAPBOX_TOKEN || !mounted || !interactiveContainerRef.current) return
+    if (!MAPBOX_TOKEN || !hasOpenedOnce || !interactiveContainerRef.current) return
     mapboxgl.accessToken = MAPBOX_TOKEN
 
     const map = new mapboxgl.Map({
@@ -173,7 +173,7 @@ export function LocationMap() {
       map.remove()
       interactiveMapRef.current = null
     }
-  }, [mounted])
+  }, [hasOpenedOnce])
 
   const closePanel = useCallback(() => {
     const flip = getFlipFromElement(triggerRef.current)
@@ -205,10 +205,10 @@ export function LocationMap() {
 
   function openPanel() {
     if (!hasOpenedOnce) {
-      // Must commit (and the interactive map must resize into its now-real size) before the snap
-      // below, or the panel would still be zero-size when its transform/opacity go live.
+      // Must commit before the snap below, or the panel would still be zero-size when its
+      // transform/opacity go live. This also lets the interactive-map effect construct its
+      // `mapboxgl.Map` against an already-real-size container (see that effect's comment).
       flushSync(() => setHasOpenedOnce(true))
-      interactiveMapRef.current?.resize()
     }
 
     const flip = getFlipFromElement(triggerRef.current)
