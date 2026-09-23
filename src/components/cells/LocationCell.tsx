@@ -1,7 +1,19 @@
+'use client'
+
+import dynamic from 'next/dynamic'
 import { BentoCard } from '@/components/bento/BentoCard'
 import { pointsOfInterest, siteLocation } from '@/config/mapLocations'
-import { LocationMap } from './LocationMap'
+import { GradientNoiseBackground } from '@/components/media/GradientNoiseBackground'
 import { eyebrowClassName } from './cell-styles'
+
+/**
+ * Loaded on demand: mapbox-gl adds ~740 KB of JS that's mostly unused until this
+ * card is actually interacted with, so it shouldn't be in the initial bundle.
+ */
+const LocationMap = dynamic(() => import('./LocationMap').then((mod) => mod.LocationMap), {
+  ssr: false,
+  loading: () => <GradientNoiseBackground />,
+})
 
 export function LocationCell() {
   return (
