@@ -110,7 +110,6 @@ export function TourForm() {
                 autoComplete="name"
                 aria-invalid={!!errors.name}
                 aria-describedby={errors.name ? 'name-error' : undefined}
-                tabIndex={1}
                 className={fieldClassName}
               />
               {errors.name && (
@@ -128,7 +127,6 @@ export function TourForm() {
                 autoComplete="email"
                 aria-invalid={!!errors.email}
                 aria-describedby={errors.email ? 'email-error' : undefined}
-                tabIndex={2}
                 className={fieldClassName}
               />
               {errors.email && (
@@ -146,7 +144,6 @@ export function TourForm() {
                 autoComplete="tel"
                 aria-invalid={!!errors.phone}
                 aria-describedby={errors.phone ? 'phone-error' : undefined}
-                tabIndex={3}
                 className={fieldClassName}
               />
               {errors.phone && (
@@ -170,7 +167,6 @@ export function TourForm() {
                       aria-labelledby="preferred-date-label"
                       aria-invalid={!!errors.preferredDate}
                       aria-describedby={errors.preferredDate ? 'preferred-date-error' : undefined}
-                      tabIndex={4}
                       className={cn(fieldClassName, 'flex items-center justify-between gap-2 text-left')}
                     >
                       <span className={field.value ? undefined : 'text-muted-foreground'}>
@@ -202,7 +198,7 @@ export function TourForm() {
 
             <label className="flex flex-col gap-1.5">
               <span className={labelClassName}>Residence type</span>
-              <select {...register('residenceType')} tabIndex={5} className={fieldClassName}>
+              <select {...register('residenceType')} className={fieldClassName}>
                 {unitCategories.map((type) => (
                   <option key={type} value={type}>
                     {TYPE_LABEL[type]}
@@ -218,7 +214,6 @@ export function TourForm() {
                 rows={3}
                 aria-invalid={!!errors.message}
                 aria-describedby={errors.message ? 'message-error' : undefined}
-                tabIndex={6}
                 className={`${fieldClassName} resize-none`}
               />
               {errors.message && (
@@ -229,7 +224,7 @@ export function TourForm() {
             </label>
 
             <div className="flex justify-end md:col-span-2">
-              <Button type="submit" size="lg" disabled={isSubmitting} tabIndex={7} className="w-full md:w-auto">
+              <Button type="submit" size="lg" disabled={isSubmitting} className="w-full md:w-auto">
                 {isSubmitting ? 'Sending…' : 'Request a Tour'}
               </Button>
             </div>

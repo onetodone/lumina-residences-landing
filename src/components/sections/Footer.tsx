@@ -62,7 +62,7 @@ export function Footer() {
             href={studioConfig.telegram}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gold hover:text-foreground transition-colors duration-(--duration-fast)"
+            className="text-gold hover:text-foreground underline underline-offset-2 transition-colors duration-(--duration-fast)"
           >
             {studioConfig.name}
           </a>{' '}
@@ -71,7 +71,7 @@ export function Footer() {
             href={studioConfig.telegram}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gold hover:text-foreground transition-colors duration-(--duration-fast)"
+            className="text-gold hover:text-foreground underline underline-offset-2 transition-colors duration-(--duration-fast)"
           >
             Telegram
           </a>{' '}
@@ -80,7 +80,7 @@ export function Footer() {
             href={studioConfig.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gold hover:text-foreground transition-colors duration-(--duration-fast)"
+            className="text-gold hover:text-foreground underline underline-offset-2 transition-colors duration-(--duration-fast)"
           >
             LinkedIn
           </a>
